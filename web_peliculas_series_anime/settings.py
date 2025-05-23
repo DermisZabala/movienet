@@ -4,22 +4,31 @@ Django settings for web_peliculas_series_anime project.
 
 from pathlib import Path
 import os
-from dotenv import load_dotenv # Para leer .env localmente
-import dj_database_url
+import sys # Necesario para sys.argv
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-# Cargar variables de entorno desde .env (SOLO PARA DESARROLLO LOCAL)
-# En Vercel, las variables de entorno se configuran en el dashboard de Vercel.
-# Comprueba si estamos en un entorno de Vercel para evitar cargar .env en producción
-# VERCEL_ENV es una variable de entorno que Vercel define.
-# Puedes usar una variable propia como IS_PRODUCTION si prefieres.
-if not os.environ.get('VERCEL_ENV') == 'production':
-    load_dotenv(BASE_DIR / '.env')
+# --- Carga de variables de entorno desde .env (SOLO PARA DESARROLLO LOCAL) ---
+IS_VERCEL_PRODUCTION = os.environ.get('VERCEL_ENV') == 'production'
+IS_COLLECTSTATIC = 'collectstatic' in sys.argv # Detectar si se está ejecutando collectstatic
+
+if not IS_VERCEL_PRODUCTION:
+    try:
+        from dotenv import load_dotenv
+        env_path = BASE_DIR / '.env'
+        if env_path.is_file():
+            load_dotenv(dotenv_path=env_path)
+            print("INFO: Archivo .env cargado para desarrollo local.")
+        else:
+            print(f"INFO: Archivo .env no encontrado en {env_path}. Se usarán valores por defecto o variables de entorno del SO.")
+    except ImportError:
+        print("ADVERTENCIA: El paquete 'python-dotenv' no está instalado. El archivo .env no se cargará.")
+        print("           Para desarrollo local, considera añadir 'python-dotenv' a tus requirements.txt.")
+# --- Fin de la carga de .env ---
 
 
-# Logging (ya lo tienes, está bien para empezar)
+# Logging
 LOGGING = {
     'version': 1,
     'disable_existing_loggers': False,
@@ -38,30 +47,38 @@ LOGGING = {
     },
     'root': {
         'handlers': ['console'],
-        'level': os.environ.get('DJANGO_LOG_LEVEL', 'INFO'), # Controla el nivel de log con una variable
+        'level': os.environ.get('DJANGO_LOG_LEVEL', 'DEBUG' if not IS_VERCEL_PRODUCTION else 'INFO'),
     },
     'loggers': {
         'django': {
             'handlers': ['console'],
-            'level': 'INFO', # Menos verboso para Django en producción
+            'level': 'INFO',
             'propagate': False,
         },
     },
 }
 
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/5.2/howto/deployment/checklist/
+SECRET_KEY = os.environ.get(
+    'DJANGO_SECRET_KEY',
+    'local_fallback_django_insecure_gm43%hnrhr46nchk!76u=y^#c*si!tqv-t_mg9wy5^5cn(uv6x'
+)
 
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 'django-insecure-gm43%hnrhr46nchk!76u=y^#c*si!tqv-t_mg9wy5^5cn(uv6x') # Fallback para desarrollo
-
-# SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.environ.get('DJANGO_DEBUG', 'False').lower() == 'true'
 
 ALLOWED_HOSTS_STRING = os.environ.get('DJANGO_ALLOWED_HOSTS', '127.0.0.1,localhost')
-ALLOWED_HOSTS = ALLOWED_HOSTS_STRING.split(',') if ALLOWED_HOSTS_STRING else []
-# En Vercel, también querrás añadir tu dominio de Vercel aquí.
-# Vercel suele añadirlo automáticamente, o puedes poner '.vercel.app' si es necesario.
+ALLOWED_HOSTS = [host.strip() for host in ALLOWED_HOSTS_STRING.split(',') if host.strip()]
+
+if IS_VERCEL_PRODUCTION and os.environ.get('VERCEL_URL'):
+    vercel_host = os.environ.get('VERCEL_URL')
+    if vercel_host not in ALLOWED_HOSTS:
+        ALLOWED_HOSTS.append(vercel_host)
+    # Para permitir todos los dominios de preview de Vercel de este proyecto:
+    # (ej. mi-proyecto-git-rama.vercel.app, mi-proyecto- uniquesuffix.vercel.app)
+    # Es más seguro ser explícito o usar un patrón más específico si es posible.
+    # Si tu VERCEL_URL es tu dominio de producción, esto no ayuda mucho con los previews.
+    # Una mejor aproximación es añadir los dominios de preview explícitamente o usar '*.vercel.app'
+    # si estás seguro de que solo tu proyecto usará ese patrón.
+    # Por ahora, dejaremos que el usuario añada los dominios de preview necesarios a DJANGO_ALLOWED_HOSTS.
 
 
 # Application definition
@@ -71,14 +88,14 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
-    'whitenoise.runserver_nostatic', # Para servir estáticos en desarrollo sin `collectstatic` siempre
+    'whitenoise.runserver_nostatic',
     'django.contrib.staticfiles',
-    'catalogo', # Tu aplicación
+    'catalogo',
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
-    'whitenoise.middleware.WhiteNoiseMiddleware', # Whitenoise, después de SecurityMiddleware
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -92,8 +109,7 @@ ROOT_URLCONF = 'web_peliculas_series_anime.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        # 'DIRS': [BASE_DIR / 'catalogo/templates'], # Django buscará en app/templates/ por defecto si APP_DIRS es True
-        'DIRS': [BASE_DIR / 'templates'], # Si tienes una carpeta 'templates' a nivel de proyecto
+        'DIRS': [BASE_DIR / 'templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -110,30 +126,39 @@ WSGI_APPLICATION = 'web_peliculas_series_anime.wsgi.application'
 
 
 # Database
-# https://docs.djangoproject.com/en/5.2/ref/settings/#databases
-
-# Para Vercel, necesitarás una DB externa. SQLite no es persistente.
-# Ejemplo con dj_database_url para leer DATABASE_URL de las variables de entorno de Vercel
 DATABASE_URL = os.environ.get('DATABASE_URL')
-if DATABASE_URL:
 
+if IS_COLLECTSTATIC and not DATABASE_URL:
+    # Si estamos corriendo collectstatic y no hay DATABASE_URL (común en entornos de build simples),
+    # usa una configuración de base de datos dummy para evitar errores como _sqlite3 no encontrado,
+    # asumiendo que collectstatic no REALMENTE necesita una base de datos funcional.
+    print("INFO: Ejecutando collectstatic sin un backend de base de datos completo (usando dummy).")
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.dummy',
+        }
+    }
+elif DATABASE_URL:
+    import dj_database_url
     DATABASES = {
         'default': dj_database_url.config(
-            conn_max_age=600, # Tiempo de vida de la conexión
-            ssl_require=True if os.environ.get('VERCEL_ENV') == 'production' else False # SSL para DBs de producción
+            conn_max_age=600,
+            ssl_require=True if IS_VERCEL_PRODUCTION else False
         )
     }
-else: # Fallback a SQLite para desarrollo local si DATABASE_URL no está configurada
+else: # Fallback a SQLite para desarrollo local o si DATABASE_URL no está configurada
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.sqlite3',
             'NAME': BASE_DIR / 'db.sqlite3',
         }
     }
+    if IS_VERCEL_PRODUCTION and not IS_COLLECTSTATIC:
+        # No mostrar esta advertencia durante collectstatic si ya estamos usando el dummy.
+        print("ADVERTENCIA CRÍTICA: DATABASE_URL no está configurada. Usando SQLite efímero en producción (¡NO RECOMENDADO!).")
 
 
 # Password validation
-# ... (mantenlos como están)
 AUTH_PASSWORD_VALIDATORS = [
     {'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator'},
     {'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator'},
@@ -150,18 +175,13 @@ USE_TZ = True
 
 
 # Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/5.2/howto/static-files/
-STATIC_URL = '/static/' # URL para referenciar archivos estáticos en plantillas
+STATIC_URL = '/static/'
 STATICFILES_DIRS = [
-    BASE_DIR / "catalogo" / "static", # Si tienes estáticos a nivel de app que quieres que se encuentren
-                                      # o una carpeta 'static' global a nivel de proyecto
-    # BASE_DIR / "static", # Descomenta si tienes una carpeta 'static' en la raíz del proyecto
+    BASE_DIR / "catalogo" / "static",
 ]
-# Directorio donde `collectstatic` copiará todos los archivos estáticos para producción.
 STATIC_ROOT = BASE_DIR / "staticfiles_build" / "static"
-
-# Configuración de Whitenoise para compresión y caché inmutable
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
 
 # Default primary key field type
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'

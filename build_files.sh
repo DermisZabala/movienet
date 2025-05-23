@@ -2,25 +2,23 @@
 
 echo "Building project..."
 
-# Instalar dependencias si es necesario (Vercel suele hacerlo desde requirements.txt)
-# pip install -r requirements.txt # Comentado, Vercel lo hace
-
-# Crear directorio para archivos estáticos si no existe
-mkdir -p staticfiles_build/static
-
-# Instalar dependencias de Python
+# Instalar dependencias de Python ANTES de cualquier comando de manage.py
 echo "Installing Python dependencies..."
-pip3 install -r requirements.txt # O solo pip si python3 es el default en el builder
+pip3 install -r requirements.txt # Usamos pip3 para ser explícitos
 
+# (Opcional) Crear directorio para archivos estáticos si no existe.
+# Django/collectstatic generalmente crea la estructura de STATIC_ROOT,
+# así que esta línea puede ser redundante o incluso innecesaria.
+# Si tienes problemas, prueba comentándola.
+# mkdir -p staticfiles_build/static
 
-# Ejecutar collectstatic
+# Ejecutar collectstatic usando python3
 echo "Collecting static files..."
-python3 manage.py collectstatic --noinput --clear # <--- CAMBIO PRINCIPAL AQUÍ
+python3 manage.py collectstatic --noinput --clear
 
-
-# (Opcional) Ejecutar migraciones si tu base de datos lo permite en el build.
-# A menudo es mejor ejecutar migraciones como un paso separado o a través de la consola de tu proveedor de DB.
+# (Comentado - Opcional) Ejecutar migraciones si tuvieras una base de datos persistente
+# y si es seguro ejecutarlo en el build.
 # echo "Applying database migrations..."
-# python manage.py migrate --noinput
+# python3 manage.py migrate --noinput
 
 echo "Build finished."
