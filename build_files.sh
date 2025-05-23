@@ -10,7 +10,8 @@ mkdir -p staticfiles_build/static
 
 # Ejecutar collectstatic
 echo "Collecting static files..."
-python manage.py collectstatic --noinput --clear
+python3 manage.py collectstatic --noinput --clear # <--- CAMBIO PRINCIPAL AQUÍ
+
 
 # (Opcional) Ejecutar migraciones si tu base de datos lo permite en el build.
 # A menudo es mejor ejecutar migraciones como un paso separado o a través de la consola de tu proveedor de DB.
