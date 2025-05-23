@@ -14,3 +14,6 @@ from django.core.wsgi import get_wsgi_application
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'web_peliculas_series_anime.settings')
 
 application = get_wsgi_application()
+
+# Añade esta línea para que Vercel encuentre la aplicación
+app = application
