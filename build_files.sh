@@ -8,6 +8,11 @@ echo "Building project..."
 # Crear directorio para archivos estáticos si no existe
 mkdir -p staticfiles_build/static
 
+# Instalar dependencias de Python
+echo "Installing Python dependencies..."
+pip3 install -r requirements.txt # O solo pip si python3 es el default en el builder
+
+
 # Ejecutar collectstatic
 echo "Collecting static files..."
 python3 manage.py collectstatic --noinput --clear # <--- CAMBIO PRINCIPAL AQUÍ
