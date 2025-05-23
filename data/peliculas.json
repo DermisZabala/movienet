@@ -1,0 +1,28 @@
+[
+  {
+    "id": "pelicula_001",
+    "titulo": "Dune: Parte Dos",
+    "sinopsis": "Paul Atreides se une a los Fremen y comienza un viaje espiritual y marcial para convertirse en Muad'dib...",
+    "elenco": ["Timothée Chalamet", "Zendaya", "Rebecca Ferguson"],
+    "anio": 2024,
+    "genero": ["Ciencia Ficción", "Aventura", "Drama"],
+    "calificacion": 8.9,
+    "poster": "https://es.web.img3.acsta.net/pictures/24/02/20/17/42/2385575.jpg",
+    "iframes": [
+      "https://cdn-v1erxe9dtcvj2lqt.orbitcache.com/engine/hls2/01/14172/xjt67esb9nfr_,n,.urlset/master.m3u8?t=bFgkq6PhkGVYuKAa-hGz8Y6NK-F_gD1BgPFGGYQGErg&s=1747923543&e=14400&f=70864322&node=CcG+qOjROgZUTd3yvKUVtqHPJW1rxtjJmbg4P9ekU20=&i=148.103&sp=2500&asn=28118&q=n&rq=EeuBFDv33Zwtq8GwO8hm07bWbcgWB32etAxm5sIG"
+    ]
+  },
+  {
+    "id": "pelicula_002",
+    "titulo": "Oppenheimer",
+    "sinopsis": "La historia del científico J. Robert Oppenheimer y su papel en el desarrollo de la bomba atomica.",
+    "elenco": ["Cillian Murphy", "Emily Blunt", "Matt Damon"],
+    "anio": 2023,
+    "genero": ["Biografía", "Drama", "Historia"],
+    "calificacion": 8.6,
+    "poster": "https://image.tmdb.org/t/p/w500/8Gxv8gSFCU0XGDykEGv7zR1n2ua.jpg",
+    "iframes": [
+      "https://cdn-fzztnurzs3zs7fva.orbitcache.com/engine/hls2/01/12283/qfcrwocwd69x_,n,.urlset/master.m3u8?t=DTXcBB6-HtMyJJyWR1wlpH4YOn5nl9uuQKFmKxks3Bk&s=1747923246&e=14400&f=61415379&node=7zmOqA8YYeomVEz/IWqh5k8sXrT/7bEWlhAkHbZ0ad8=&i=148.103&sp=2500&asn=28118&q=n&rq=EeuBFDv33Zwtq8GwO8hm07bWbcgWB32etAxm5sIG"  
+    ]
+  }
+]

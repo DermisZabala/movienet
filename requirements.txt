@@ -1,0 +1,32 @@
+# requirements.txt
+
+# Django Core
+Django>=5.0,<5.3 # O la versión exacta que estés usando, ej: Django==5.0.2
+
+# Servidor WSGI (Vercel lo usará)
+gunicorn>=20.1.0
+
+# Servir archivos estáticos en producción
+whitenoise>=6.0.0
+
+# Para leer variables de entorno desde el archivo .env (para desarrollo local)
+python-dotenv>=0.19.0
+
+# Para parsear URLs de conexión a bases de datos desde variables de entorno
+dj-database-url>=0.5.0
+
+# Driver de base de datos PostgreSQL (si usas PostgreSQL en producción, lo cual es recomendado)
+# Si usas otra base de datos en producción, necesitarás su driver correspondiente.
+psycopg2-binary>=2.9.0 # O simplemente psycopg2 si no quieres la versión binaria
+
+# (Opcional pero útil) Para peticiones HTTP (si tus vistas cargan JSON desde URLs externas)
+requests>=2.25.0
+
+# (Opcional) Si tienes subida de imágenes/archivos y necesitas manipulación de imágenes
+# Pillow>=9.0.0
+
+# (Opcional) Si usas Django REST framework
+# djangorestframework>=3.12.0
+
+# ... cualquier otra dependencia específica de tu proyecto ...
+# Por ejemplo, si usas librerías para JWT, Markdown, etc.
