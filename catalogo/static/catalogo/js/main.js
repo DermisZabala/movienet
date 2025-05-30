@@ -51,8 +51,8 @@ document.addEventListener('DOMContentLoaded', function() {
         const { contentId, contentTitle, reportedLink, itemType, episodeTitle = '', serverLabel = '' } = button.dataset;
 
         if (!contentId || !contentTitle || !reportedLink || !itemType) {
-            console.error('Datos incompletos para reporte:', button.dataset);
-            alert('Faltan datos para enviar el reporte.');
+            console.error('Incomplete data for report:', button.dataset); // English console
+            alert('Missing data to send the report.'); // English alert
             return;
         }
         const payload = {
@@ -67,7 +67,7 @@ document.addEventListener('DOMContentLoaded', function() {
         
         const originalButtonText = button.textContent;
         button.disabled = true;
-        button.textContent = 'Reportando...';
+        button.textContent = 'Reporting...'; // English text
 
         fetch(reportUrl, {
             method: 'POST',
@@ -80,17 +80,17 @@ document.addEventListener('DOMContentLoaded', function() {
         .then(response => response.json())
         .then(data => {
             if (data.status === 'success') {
-                alert('¡Gracias! Tu reporte ha sido enviado.');
-                button.textContent = 'Reportado'; 
+                alert('Thank you! Your report has been submitted.'); // English alert
+                button.textContent = 'Reported';  // English text
             } else {
-                alert('Error al enviar el reporte: ' + (data.message || 'Inténtalo de nuevo.'));
+                alert('Error sending report: ' + (data.message || 'Try again.')); // English alert
                 button.textContent = originalButtonText;
                 button.disabled = false;
             }
         })
         .catch(error => {
-            console.error('Error en la petición de reporte:', error);
-            alert('Hubo un error de conexión al reportar el enlace.');
+            console.error('Error in report request:', error); // English console
+            alert('There was a connection error while reporting the link.'); // English alert
             button.textContent = originalButtonText;
             button.disabled = false;
         });
@@ -105,7 +105,7 @@ document.addEventListener('DOMContentLoaded', function() {
             container.appendChild(reportBtn);
             reportBtn.addEventListener('click', handleReportLink);
         }
-        reportBtn.textContent = 'Reportar Video';
+        reportBtn.textContent = 'Report Video'; // English text
         reportBtn.dataset.contentId = data.contentId;
         reportBtn.dataset.contentTitle = data.contentTitle;
         reportBtn.dataset.itemType = data.itemType;
@@ -132,7 +132,7 @@ document.addEventListener('DOMContentLoaded', function() {
             const iframeSourcesString = movieIframeDataElement.dataset.iframes;
             const movieId = movieIframeDataElement.dataset.id;
             const movieTitle = movieIframeDataElement.dataset.title;
-            const itemType = movieIframeDataElement.dataset.itemType;
+            const itemType = movieIframeDataElement.dataset.itemType; // This will be "pelicula"
             const originalIframes = iframeSourcesString ? iframeSourcesString.split('|||').filter(link => link.trim() !== '') : []; // Estas son las URLs de EMBED
 
             movieServerButtonsContainer.innerHTML = '';
@@ -141,7 +141,6 @@ document.addEventListener('DOMContentLoaded', function() {
             if (originalIframes.length > 0) {
                 currentMovieActiveEmbedUrl = originalIframes[0]; // Asignar la primera URL de embed como activa
 
-                // Asegurar que el iframe carga la URL de embed correcta inicialmente
                 if (movieIframePlayerElement.src !== currentMovieActiveEmbedUrl) {
                     movieIframePlayerElement.src = currentMovieActiveEmbedUrl; 
                 }
@@ -150,26 +149,26 @@ document.addEventListener('DOMContentLoaded', function() {
                     contentId: movieId,
                     contentTitle: movieTitle,
                     itemType: itemType,
-                    activeIframeSrc: currentMovieActiveEmbedUrl, // Usar la URL de EMBED almacenada
-                    activeServerLabel: "Servidor 1"
+                    activeIframeSrc: currentMovieActiveEmbedUrl, 
+                    activeServerLabel: "Server 1" // English text
                 });
 
                 originalIframes.forEach((iframeEmbedSrc, index) => {
-                    const serverLabel = `Servidor ${index + 1}`;
+                    const serverLabel = `Server ${index + 1}`; // English text
                     const serverButton = document.createElement('button');
                     serverButton.classList.add('button', 'button--secondary', 'change-movie-server-btn');
                     serverButton.textContent = serverLabel;
-                    serverButton.dataset.iframeSrc = iframeEmbedSrc; // Esta es la URL de EMBED
+                    serverButton.dataset.iframeSrc = iframeEmbedSrc; 
 
                     if (iframeEmbedSrc === currentMovieActiveEmbedUrl) {
                         serverButton.classList.add('active');
                     }
 
                     serverButton.addEventListener('click', function() {
-                        const newEmbedSrc = this.dataset.iframeSrc; // URL de EMBED
+                        const newEmbedSrc = this.dataset.iframeSrc; 
                         if (newEmbedSrc && movieIframePlayerElement) {
                             movieIframePlayerElement.src = newEmbedSrc;
-                            currentMovieActiveEmbedUrl = newEmbedSrc; // Actualizar la URL de EMBED activa
+                            currentMovieActiveEmbedUrl = newEmbedSrc; 
                             
                             movieServerButtonsContainer.querySelectorAll('.change-movie-server-btn.active').forEach(b => b.classList.remove('active'));
                             this.classList.add('active');
@@ -178,7 +177,7 @@ document.addEventListener('DOMContentLoaded', function() {
                                 contentId: movieId,
                                 contentTitle: movieTitle,
                                 itemType: itemType,
-                                activeIframeSrc: currentMovieActiveEmbedUrl, // Usar la URL de EMBED almacenada
+                                activeIframeSrc: currentMovieActiveEmbedUrl, 
                                 activeServerLabel: serverLabel
                             });
                         }
@@ -190,10 +189,9 @@ document.addEventListener('DOMContentLoaded', function() {
                  if (h4) h4.style.display = 'none';
                  movieServerButtonsContainer.innerHTML = '';
                  movieReportButtonContainer.innerHTML = '';
-                 // El HTML maneja el mensaje si no hay iframes en la carga inicial
             }
         } else {
-             console.warn("Movie player (iframe): Faltan contenedores para botones de servidor o reporte.");
+             console.warn("Movie player (iframe): Missing containers for server or report buttons."); // English console
         }
     }
 
@@ -210,12 +208,12 @@ document.addEventListener('DOMContentLoaded', function() {
         const episodeReportButtonContainer = currentEpisodeControlsContainer.querySelector('#episode-report-button-container');
         
         if (!episodeServerButtonsContainer || !episodeReportButtonContainer) {
-            console.warn("Series/Anime player (iframe): Faltan contenedores para botones de servidor o reporte de episodio.");
+            console.warn("Series/Anime player (iframe): Missing containers for episode server or report buttons."); // English console
         } else {
             document.querySelectorAll('.series-anime-detail-page .play-episode-master-btn').forEach(masterButton => {
                 masterButton.addEventListener('click', function() {
                     const episodeItem = this.closest('.episode-item');
-                    const { episodeTitle, episodeIframes, contentId, contentTitle, itemType } = episodeItem.dataset;
+                    const { episodeTitle, episodeIframes, contentId, contentTitle, itemType } = episodeItem.dataset; // itemType will be 'serie' or 'anime'
                     const originalIframes = episodeIframes ? episodeIframes.split('|||').filter(link => link.trim() !== '') : []; // URLs de EMBED
 
                     episodeServerButtonsContainer.innerHTML = '';
@@ -224,14 +222,14 @@ document.addEventListener('DOMContentLoaded', function() {
                     if (h4Title) h4Title.style.display = 'block';
 
                     if (originalIframes.length === 0) {
-                        alert('No hay enlaces de reproducción disponibles para este episodio.');
-                        currentEpisodeTitlePlayerEl.textContent = episodeTitle + " (Sin enlaces)";
+                        alert('No playback links available for this episode.'); // English alert
+                        currentEpisodeTitlePlayerEl.textContent = episodeTitle + " (No links)"; // English text
                         dynamicPlayerSection.style.display = 'block'; 
                         episodeServerButtonsContainer.style.display = 'none';
                         episodeReportButtonContainer.style.display = 'none';
                         if (h4Title) h4Title.style.display = 'none';
                         seriesAnimeIframePlayerElement.src = ''; 
-                        currentEpisodeActiveEmbedUrl = ""; // Resetear
+                        currentEpisodeActiveEmbedUrl = ""; 
                         return;
                     }
 
@@ -241,7 +239,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     currentEpisodeTitlePlayerEl.textContent = episodeTitle;
                     dynamicPlayerSection.style.display = 'block';
 
-                    currentEpisodeActiveEmbedUrl = originalIframes[0]; // Asignar la primera URL de embed como activa
+                    currentEpisodeActiveEmbedUrl = originalIframes[0]; 
                     seriesAnimeIframePlayerElement.src = currentEpisodeActiveEmbedUrl;
 
                     createOrUpdateReportButton(episodeReportButtonContainer, {
@@ -249,26 +247,26 @@ document.addEventListener('DOMContentLoaded', function() {
                         contentTitle: contentTitle, 
                         itemType: itemType,
                         episodeTitle: episodeTitle, 
-                        activeIframeSrc: currentEpisodeActiveEmbedUrl, // Usar la URL de EMBED almacenada
-                        activeServerLabel: "Servidor 1"
+                        activeIframeSrc: currentEpisodeActiveEmbedUrl, 
+                        activeServerLabel: "Server 1" // English text
                     });
 
                     originalIframes.forEach((iframeEmbedSrc, index) => {
-                        const serverLabel = `Servidor ${index + 1}`;
+                        const serverLabel = `Server ${index + 1}`; // English text
                         const serverButton = document.createElement('button');
                         serverButton.classList.add('button', 'button--secondary', 'change-episode-server-btn');
                         serverButton.textContent = serverLabel;
-                        serverButton.dataset.iframeSrc = iframeEmbedSrc; // URL de EMBED
+                        serverButton.dataset.iframeSrc = iframeEmbedSrc; 
 
                         if (iframeEmbedSrc === currentEpisodeActiveEmbedUrl) {
                            serverButton.classList.add('active');
                         }
 
                         serverButton.addEventListener('click', function() {
-                            const newEmbedSrc = this.dataset.iframeSrc; // URL de EMBED
+                            const newEmbedSrc = this.dataset.iframeSrc; 
                             if (newEmbedSrc && seriesAnimeIframePlayerElement) {
                                 seriesAnimeIframePlayerElement.src = newEmbedSrc;
-                                currentEpisodeActiveEmbedUrl = newEmbedSrc; // Actualizar
+                                currentEpisodeActiveEmbedUrl = newEmbedSrc; 
                                 
                                 episodeServerButtonsContainer.querySelectorAll('.change-episode-server-btn.active').forEach(b => b.classList.remove('active'));
                                 this.classList.add('active');
@@ -278,7 +276,7 @@ document.addEventListener('DOMContentLoaded', function() {
                                     contentTitle: contentTitle,
                                     itemType: itemType,
                                     episodeTitle: episodeTitle,
-                                    activeIframeSrc: currentEpisodeActiveEmbedUrl, // Usar la URL de EMBED almacenada
+                                    activeIframeSrc: currentEpisodeActiveEmbedUrl, 
                                     activeServerLabel: serverLabel
                                 });
                             }
