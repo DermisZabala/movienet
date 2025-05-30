@@ -10,56 +10,54 @@
             <img src="{{ item.poster }}" alt="{{ item.titulo }} Poster" class="content-detail__poster" loading="lazy">
             <div class="content-detail__info">
                 <h1>{{ item.titulo }} ({{ item.anio }})</h1>
-                <p><strong>Género:</strong> {{ item.genero|join:", " }}</p>
-                <p><strong>Calificación:</strong> {{ item.calificacion }}/10</p>
-                <p><strong>Elenco:</strong> {{ item.elenco|join:", " }}</p>
-                <h3>Sinopsis</h3>
+                <p><strong>Genre:</strong> {{ item.genero|join:", " }}</p>
+                <p><strong>Rating:</strong> {{ item.calificacion }}/10</p>
+                <p><strong>Cast:</strong> {{ item.elenco|join:", " }}</p>
+                <h3>Synopsis</h3>
                 <p class="content-detail__synopsis">{{ item.sinopsis }}</p>
             </div>
         </header>
-
-       <section class="content-detail__player-section">
-            <h2>Ver Película</h2>
+        <section class="content-detail__player-section">
+            <h2>Watch Movie</h2>
             {% if item.iframes and item.iframes.0 %}
                 <div class="video-player-wrapper">
                     <div class="video-player-container">
                         <iframe
-                            id="main-iframe-player"  {# Nuevo ID para el iframe #}
-                            src="{{ item.iframes.0 }}" {# Carga el primer iframe por defecto #}
+                            id="main-iframe-player"
+                            src="{{ item.iframes.0 }}"
                             frameborder="0"
                             allowfullscreen
-                            scrolling="no" {# Opcional, si no quieres barras de scroll del iframe #}
-                            allow="autoplay; encrypted-media" {# Opcional, depende de los servidores #}
+                            scrolling="no"
+                            allow="autoplay; encrypted-media"
                         ></iframe>
                     </div>
                 </div>
 
-                {# Estructura para que JS inserte los botones #}
                 <div class="player-options-controls" id="movie-player-options">
-                    <h4>Servidores Disponibles:</h4>
+                    <h4>Available Servers:</h4>
                     <div class="server-selection-controls" id="movie-server-buttons">
-                        {# Los botones de "Servidor N" para la película se insertarán aquí por JS #}
+                        <!-- Server buttons will be inserted here by JS -->
                     </div>
                     <div class="report-controls" id="movie-report-button-container">
-                        {# El botón "Reportar Video" para la película se insertará aquí por JS #}
+                        <!-- Report button will be inserted here by JS -->
                     </div>
                 </div>
-                {# Elemento oculto para pasar datos al JS #}
+
                 <div id="movie-iframe-data"
                      data-iframes="{{ item.iframes|join:'|||' }}"
                      data-id="{{ item.id }}"
                      data-title="{{ item.titulo }}"
-                     data-item-type="pelicula"
+                     data-item-type="movie"
                      style="display:none;">
                 </div>
 
             {% else %}
-                <p class="message message--warning">No hay enlaces de reproducción disponibles para esta película en este momento.</p>
+                <p class="message message--warning">No streaming links are currently available for this movie.</p>
             {% endif %}
         </section>
     </article>
     <div class="ad-space ad-detail-page">
-        <span>Anuncio en Página de Detalle</span>
+        <span>Ad on Detail Page</span>
     </div>
 </div>
 {% endblock %}
