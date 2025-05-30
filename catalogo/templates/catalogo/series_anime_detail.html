@@ -1,0 +1,91 @@
+{% extends "catalogo/base.html" %}
+{% load static %}
+
+{% block title %}{{ item.titulo }}{% endblock %}
+
+{% block content %}
+<div class="container detail-page series-anime-detail-page">
+    <article class="content-detail">
+        <header class="content-detail__header">
+            <img src="{{ item.poster }}" alt="{{ item.titulo }} Poster" class="content-detail__poster" loading="lazy">
+            <div class="content-detail__info">
+                <h1>{{ item.titulo }} ({{ item.anio }})</h1>
+                <p><strong>Género:</strong> {{ item.genero|join:", " }}</p>
+                <p><strong>Calificación:</strong> {{ item.calificacion }}/10</p>
+                {% if item.elenco %}
+                <p><strong>Elenco:</strong> {{ item.elenco|join:", " }}</p>
+                {% endif %}
+                <h3>Sinopsis General</h3>
+                <p class="content-detail__synopsis">{{ item.sinopsis }}</p>
+            </div>
+        </header>
+
+        <section class="content-detail__player-section" id="dynamic-player-section" style="display:none;">
+            <h2 id="current-episode-title-player"></h2>
+            <div class="video-player-wrapper">
+                <div class="video-player-container">
+                    <iframe
+                        id="series-anime-main-iframe-player" {# Nuevo ID para el iframe #}
+                        frameborder="0"
+                        allowfullscreen
+                        scrolling="no"
+                        allow="autoplay; encrypted-media"
+                        src="" {# Se cargará dinámicamente por JS #}
+                        ></iframe>
+                </div>
+            </div>
+            <div id="current-episode-controls" class="player-options-controls episode-controls">
+                <h4>Servidores Disponibles (Episodio):</h4>
+                <div class="server-selection-controls" id="episode-server-buttons">
+                    {# Los botones de "Servidor N" para el episodio se insertarán aquí por JS #}
+                </div>
+                <div class="report-controls" id="episode-report-button-container">
+                    {# El botón "Reportar Video" para el episodio se insertará aquí por JS #}
+                </div>
+            </div>
+        </section>
+
+        <section class="seasons-episodes-section">
+            <h2>Temporadas y Episodios</h2>
+            {% if item.temporadas %}
+                {% for temporada in item.temporadas %}
+                <div class="season-block">
+                    <h3 class="season-title">
+                        Temporada {{ temporada.numero }}
+                        <span class="season-toggle-icon">▼</span>
+                    </h3>
+                    <div class="season-episodes-content">
+                        <ul class="episode-list">
+                            {% for episodio in temporada.episodios %}
+                            <li class="episode-item"
+                                data-episode-title="{{ episodio.titulo }}"
+                                data-episode-iframes="{{ episodio.iframes|join:'|||' }}"
+                                data-content-id="{{ item.id }}"
+                                data-content-title="{{ item.titulo }}" {# Título de la serie/anime general #}
+                                data-item-type="{{ tipo_contenido }}">
+                                <div class="episode-item__info">
+                                    <span class="episode-item__title">{{ episodio.titulo }}</span>
+                                    {% if episodio.sinopsis %}
+                                        <p class="episode-item__synopsis">{{ episodio.sinopsis }}</p>
+                                    {% endif %}
+                                </div>
+                                <button class="button button--primary play-episode-master-btn">
+                                    Ver Episodio
+                                </button>
+                            </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+                {% endfor %}
+            {% else %}
+                <p class="message message--info">No hay información de temporadas o episodios disponible para {{ item.titulo }}.</p>
+            {% endif %}
+        </section>
+    </article>
+
+    <div class="ad-space ad-detail-page">
+        <span>Anuncio en Página de Detalle</span>
+    </div>
+</div>
+{% endblock %}

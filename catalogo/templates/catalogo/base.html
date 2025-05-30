@@ -1,0 +1,59 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}MovieNET{% endblock %} - Películas, Series y Anime</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'catalogo/css/style.css' %}">
+    <link href="https://vjs.zencdn.net/7.17.0/video-js.css" rel="stylesheet" />
+    {% block extra_head %}{% endblock %}
+</head>
+<body>
+    <header class="site-header">
+        <nav class="container nav-container">
+            <a href="{% url 'catalogo:index' %}" class="site-logo">MovieNET</a>
+            <button class="nav-toggle" aria-label="toggle navigation">
+                <span class="hamburger"></span>
+            </button>
+            <ul class="nav-links">
+                <li><a href="{% url 'catalogo:peliculas' %}">Películas</a></li>
+                <li><a href="{% url 'catalogo:series' %}">Series</a></li>
+                <li><a href="{% url 'catalogo:anime' %}">Anime</a></li>
+            </ul>
+            <form action="{% url 'catalogo:search' %}" method="get" class="search-bar">
+                <input type="search" name="q" placeholder="Buscar título..." value="{{ request.GET.q }}" aria-label="Buscar contenido">
+                <button type="submit" aria-label="Buscar">Buscar</button>
+            </form>
+        </nav>
+    </header>
+
+    <div class="ad-space ad-banner-top">
+        <!-- Aquí tu código de anuncio -->
+        <span>Anuncio Superior</span>
+    </div>
+
+    <main class="site-main">
+        {% block content %}
+        {% endblock %}
+    </main>
+
+    <div class="ad-space ad-banner-bottom">
+        <!-- Aquí tu código de anuncio -->
+        <span>Anuncio Inferior</span>
+    </div>
+
+    <footer class="site-footer">
+        <div class="container">
+            <p>© {% now "Y" %} MOVIENET. Todos los derechos reservados.</p>
+            <!-- Más enlaces -->
+        </div>
+    </footer>
+
+    <script src="https://vjs.zencdn.net/7.17.0/video.min.js"></script> {# VIDEO.JS PRIMERO #}
+    <script src="https://vjs.zencdn.net/7.17.0/videojs-http-streaming.min.js"></script> {# VHS DESPUÉS DE VIDEO.JS BASE #}
+    <script src="{% static 'catalogo/js/main.js' %}"></script>       {# TU SCRIPT PERSONALIZADO AL FINAL (o después de sus dependencias) #}
+    {% block extra_js %}{% endblock %}
+</body>
+</html>

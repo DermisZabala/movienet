@@ -1,0 +1,259 @@
+[
+  {
+    "id": "anime_001",
+    "titulo": "Jujutsu Kaisen",
+    "sinopsis": "Un joven traga un talismán maldito para obtener sus poderes y así salvar a sus amigos, uniéndose a una organización secreta de hechiceros.",
+    "elenco": ["Junya Enoki", "Yuma Uchida", "Asami Seto"],
+    "anio": 2020,
+    "genero": ["Acción", "Sobrenatural", "Shonen"],
+    "calificacion": 8.8,
+    "poster": "https://es.web.img3.acsta.net/pictures/20/09/14/10/31/4875617.jpg",
+    "temporadas": [
+      {
+        "numero": 1,
+        "episodios": [
+          {
+            "titulo": "T1:E1 - Ryomen Sukuna",
+            "sinopsis": "Itadori Yuji, un estudiante de secundaria con una habilidad física extraordinaria, se come el dedo de Sukuna para salvar a sus amigos.",
+            "iframes": ["https://zq62mmaomhqa.cdn-centaurus.com/hls2/01/03798/96zigvni4kts_h/master.m3u8?t=lj8f0Q2YAvskjl_iLay80TqXIfHJa5aMLszWMoxKxd4&s=1747924879&e=129600&f=18993416&srv=p782h1vj3cwc&i=0.4&sp=500&p1=p782h1vj3cwc&p2=p782h1vj3cwc&asn=28118"]
+          },
+          {
+            "titulo": "T1:E2 - Por mí mismo",
+            "sinopsis": "Itadori se une a la Escuela Técnica de Jujutsu de Tokio bajo la tutela de Gojo Satoru.",
+            "iframes": ["https://kfo8mkce0fzdhlq.cdn-centaurus.com/hls2/01/03798/33icxjoldlr4_h/master.m3u8?t=UO5RVmAsEhjlEQudbPTR0WLv5EiIBhTF4fBmOi9L8DI&s=1747924923&e=129600&f=18993385&srv=7nk5i8oe2xac&i=0.4&sp=500&p1=7nk5i8oe2xac&p2=7nk5i8oe2xac&asn=28118"]
+          },
+          {
+            "titulo": "T1:E3 - Chica de acero",
+            "sinopsis": "Nobara Kugisaki se une al equipo y realiza su primera misión junto a Yuji.",
+            "iframes": ["https://p5qxmilmdj.cdn-centaurus.com/hls2/01/03798/0h14o4ljuw9o_h/master.m3u8?t=6UAZsOp-dVF64WtsntZN9iHrloDJ2q7JJvrbxnrwJ6w&s=1747924950&e=129600&f=18993396&srv=l0i73oey6j&i=0.4&sp=500&p1=l0i73oey6j&p2=l0i73oey6j&asn=28118"]
+          },
+          {
+            "titulo": "T1:E4 - La existencia terrenal del útero maldito",
+            "sinopsis": "Los estudiantes enfrentan una peligrosa misión en un centro de detención.",
+            "iframes": ["https://claqgkdce4tc.cdn-centaurus.com/hls2/01/03798/3l7wg57gcjzg_h/master.m3u8?t=c29F9PtSmOLna0ikVpEImAwqRdtBOBWGFmY3E-lj7Zg&s=1747925057&e=129600&f=18993407&srv=pnftb639riz0&i=0.4&sp=500&p1=pnftb639riz0&p2=pnftb639riz0&asn=28118"]
+          },
+          {
+            "titulo": "T1:E5 - La existencia terrenal del útero maldito II",
+            "sinopsis": "La batalla contra el espíritu maldito continúa con consecuencias inesperadas.",
+            "iframes": ["https://lu1r85hg8m.cdn-centaurus.com/hls2/01/03798/jz09pxyw1yj6_h/master.m3u8?t=5O2zHJWaPgzef3w0KGANsoqsAWPo-6SMMjoaSLwfLnA&s=1747925097&e=129600&f=18993415&srv=33cgk5qvqqq1&i=0.4&sp=500&p1=33cgk5qvqqq1&p2=33cgk5qvqqq1&asn=28118"]
+          },
+          {
+            "titulo": "T1:E6 - Tras la lluvia",
+            "sinopsis": "Yuji reflexiona sobre su experiencia mientras Gojo planea el futuro.",
+            "iframes": ["https://r63hfpdmodtc.cdn-centaurus.com/hls2/01/05347/7hu74kcaitsu_h/master.m3u8?t=sGK-FNZUjluRwFvKVJQGEXVfdDRksQsJnmiJpssote0&s=1747925119&e=129600&f=26736464&srv=i9501ls3lsee&i=0.4&sp=500&p1=i9501ls3lsee&p2=i9501ls3lsee&asn=28118"]
+          },
+          {
+            "titulo": "T1:E7 - Asalto",
+            "sinopsis": "Gojo enfrenta a un poderoso espíritu maldito en una intensa batalla.",
+            "iframes": ["https://ye0r0rrinu.cdn-centaurus.com/hls2/01/05348/ivn3lqbhrocx_h/master.m3u8?t=39yC2g8Wpypf9G0l9CTj9-pjcb5VJaJLv1MdITDJ6cI&s=1747925157&e=129600&f=26740103&srv=d96jvs07ph5l&i=0.4&sp=500&p1=d96jvs07ph5l&p2=d96jvs07ph5l&asn=28118"]
+          },
+          {
+            "titulo": "T1:E8 - Aburrimiento",
+            "sinopsis": "Los estudiantes se preparan para el evento de intercambio con la escuela de Kyoto.",
+            "iframes": ["https://m68btj72qc.cdn-centaurus.com/hls2/01/03798/rrgnqcuy2xom_h/index-v1-a1.m3u8?t=-twtFxG0krPDvXvvBwnxSz2OIWtb5ZepAMWNHovgh4Y&s=1747925182&e=129600&f=18993441&srv=hg8ifg7jzbs5&i=0.4&sp=500&p1=hg8ifg7jzbs5&p2=hg8ifg7jzbs5&asn=28118"]
+          },
+          {
+            "titulo": "T1:E9 - Donnadies y castigo",
+            "sinopsis": "Yuji investiga una serie de asesinatos y conoce a Junpei.",
+            "iframes": ["https://82psw98llfa.cdn-centaurus.com/hls2/01/03798/f267ywgrfzyt_h/index-v1-a1.m3u8?t=yddAAMXI5jmgKUmBDGGviIPxD_NOER1_kk9wBFZrxgQ&s=1747925218&e=129600&f=18993450&srv=tamwni1asczu&i=0.4&sp=500&p1=tamwni1asczu&p2=tamwni1asczu&asn=28118"]
+          },
+          {
+            "titulo": "T1:E10 - Mutación pasiva",
+            "sinopsis": "Nanami y Yuji enfrentan a un nuevo enemigo mientras investigan.",
+            "iframes": ["https://zq62mmaomhqa.cdn-centaurus.com/hls2/01/03188/60sq9jyh1dq7_n/index-v1-a1.m3u8?t=7ANZX02UmI6RIeV3zNG3qQrl0a4tNLQugHDatpwoF5Q&s=1747925296&e=129600&f=18993457&srv=ogry5xthqrpf&i=0.4&sp=500&p1=ogry5xthqrpf&p2=ogry5xthqrpf&asn=28118"]
+          },
+          {
+            "titulo": "T1:E11 - De mente cerrada",
+            "sinopsis": "La batalla contra Mahito se intensifica, poniendo a prueba a los hechiceros.",
+            "iframes": ["https://r63hfpdmodtc.cdn-centaurus.com/hls2/01/03798/dis3pdmmqwt7_h/master.m3u8?t=XbO-HUjn_Qyo-01985iYJPsIpUChf2T6sh80gtZNHVE&s=1747925314&e=129600&f=18993463&srv=33cgk5qvqqq1&i=0.4&sp=500&p1=33cgk5qvqqq1&p2=33cgk5qvqqq1&asn=28118"]
+          },
+          {
+            "titulo": "T1:E12 - Para ti, algún día",
+            "sinopsis": "Yuji intenta salvar a Junpei de la influencia de Mahito.",
+            "iframes": ["https://m68btj72qc.cdn-centaurus.com/hls2/01/03798/97qu9md6623c_h/index-v1-a1.m3u8?t=kb237Eea2OZCAxkNbk241PtNlYigX0oXrrFznYX_VbY&s=1747925326&e=129600&f=18993465&srv=ejxchamsg0ez&i=0.4&sp=500&p1=ejxchamsg0ez&p2=ejxchamsg0ez&asn=28118"]
+          },
+          {
+            "titulo": "T1:E13 - Hasta mañana",
+            "sinopsis": "La lucha contra Mahito alcanza su clímax con consecuencias devastadoras.",
+            "iframes": ["https://27u55xdzmm9q.cdn-centaurus.com/hls2/01/03798/6khwpsxx3ep0_h/index-v1-a1.m3u8?t=I0l2LVen4UY_GPJ4Dd0K4cmUVojiectYBDbn82MIsdM&s=1747925337&e=129600&f=18993475&srv=58w9twdqed1w&i=0.4&sp=500&p1=58w9twdqed1w&p2=58w9twdqed1w&asn=28118"]
+          },
+          {
+            "titulo": "T1:E14 - Evento de intercambio entre escuelas hermanas de Kyoto: Batalla grupal 0",
+            "sinopsis": "Los estudiantes de Tokyo y Kyoto se preparan para el evento de intercambio.",
+            "iframes": ["https://p2qxmiasglj.cdn-centaurus.com/hls2/01/03303/o5901pwfv7km_n/index-v1-a1.m3u8?t=TlZSj0zUCx-G7icwFVysPd7KmYmtlLZkW27mILmNruw&s=1747925351&e=129600&f=18993477&srv=m3qloss8x8br&i=0.4&sp=500&p1=m3qloss8x8br&p2=m3qloss8x8br&asn=28118"]
+          },
+          {
+            "titulo": "T1:E15 - Evento de intercambio entre escuelas hermanas de Kyoto: Batalla grupal 1",
+            "sinopsis": "Comienza la batalla grupal entre las escuelas de Tokyo y Kyoto.",
+            "iframes": ["https://jdevchpxbgc6.cdn-centaurus.com/hls2/01/03798/elobp25rrs65_h/master.m3u8?t=Y0zV5Ah6e8_LUQ4wqSFjsqlNu6iX9s0RaXEBRpiHFEM&s=1747925371&e=129600&f=18993484&srv=g8vb4eevehoy&i=0.4&sp=500&p1=g8vb4eevehoy&p2=g8vb4eevehoy&asn=28118"]
+          },
+          {
+            "titulo": "T1:E16 - Evento de intercambio entre escuelas hermanas de Kyoto: Batalla grupal 2",
+            "sinopsis": "Panda y Mechamaru se enfrentan en una intensa batalla.",
+            "iframes": ["https://g4vsrqvtrj.cdn-centaurus.com/hls2/01/03798/3c6hnlxx2d5u_h/master.m3u8?t=Yw6PSrQgOi_D44Tl1c4wql9JL5NQPtb2kERVeVmMqB0&s=1747925380&e=129600&f=18993489&srv=s2dlpo3gkmhi&i=0.4&sp=500&p1=s2dlpo3gkmhi&p2=s2dlpo3gkmhi&asn=28118"]
+          },
+          {
+            "titulo": "T1:E17 - Evento de intercambio entre escuelas hermanas de Kyoto: Batalla grupal 3",
+            "sinopsis": "Maki y Miwa luchan mientras se revelan secretos del clan Zenin.",
+            "iframes": ["https://uk2y0xwy2xup0.cdn-centaurus.com/hls2/01/03798/vkzfjtdxpyjj_h/master.m3u8?t=zXBBearo9A--TvhcWsbY7dv-Ob_wym7ruOVk2G09RXE&s=1747925399&e=129600&f=18993495&srv=z5ulhs9cbg5k&i=0.4&sp=500&p1=z5ulhs9cbg5k&p2=z5ulhs9cbg5k&asn=28118"]
+          },
+          {
+            "titulo": "T1:E18 - Sabio",
+            "sinopsis": "La batalla entre Megumi y Noritoshi se ve interrumpida por una invasión.",
+            "iframes": ["https://ye0r0rrinu.cdn-centaurus.com/hls2/01/03798/q8i43h4bzwm6_h/index-v1-a1.m3u8?t=vzYArWn7Bz0srjO4ptTOqJkA4xcUWNyDttbVsPsOUfQ&s=1747925410&e=129600&f=18993503&srv=hg8ifg7jzbs5&i=0.4&sp=500&p1=hg8ifg7jzbs5&p2=hg8ifg7jzbs5&asn=28118"]
+          },
+          {
+            "titulo": "T1:E19 - Destello negro",
+            "sinopsis": "Yuji y Todo enfrentan a Hanami en una feroz batalla.",
+            "iframes": ["https://jdevchpxbgc6.cdn-centaurus.com/hls2/01/03798/0fe68pdr655i_h/index-v1-a1.m3u8?t=nwQCa2ALStMhVkRowZVYDSODTkuht-XmHO6EXhx4NnQ&s=1747925421&e=129600&f=18993505&srv=49do5y7vqi60&i=0.4&sp=500&p1=49do5y7vqi60&p2=49do5y7vqi60&asn=28118"]
+          },
+          {
+            "titulo": "T1:E20 - No estándar",
+            "sinopsis": "La batalla continúa mientras Gojo interviene para ayudar a los estudiantes.",
+            "iframes": ["https://cv9fqnu812v.cdn-centaurus.com/hls2/01/03798/4hpncak9ifj3_h/index-v1-a1.m3u8?t=O7rC6KV9M3ofPn3TVXuvFMh-y7vKjh7I8ypuHxJmOo8&s=1747925431&e=129600&f=18993512&srv=rup99sdwt652&i=0.4&sp=500&p1=rup99sdwt652&p2=rup99sdwt652&asn=28118"]
+          },
+          {
+            "titulo": "T1:E21 - Jujutsu Koshien",
+            "sinopsis": "Los estudiantes participan en un partido de béisbol como parte del evento.",
+            "iframes": ["https://s0mlxzpt0qgc8.cdn-centaurus.com/hls2/01/03798/vyx6gx30y2aq_h/index-v1-a1.m3u8?t=eglMvX_j0913PFMrWs2EKTqpp3IdDXcD2Tq5ip3ggTE&s=1747925448&e=129600&f=18993514&srv=h4q4w9v58gkd&i=0.4&sp=500&p1=h4q4w9v58gkd&p2=h4q4w9v58gkd&asn=28118"]
+          },
+          {
+            "titulo": "T1:E22 - El origen de la obediencia ciega",
+            "sinopsis": "Los estudiantes investigan una serie de muertes misteriosas en una escuela secundaria.",
+            "iframes": ["https://cv9fqnu812v.cdn-centaurus.com/hls2/01/03798/obukk52rd55p_h/index-v1-a1.m3u8?t=QyU6UhjrFA8_-veeY2lk43q9Xchbagkh4hc_Kt6-WlM&s=1747925463&e=129600&f=18993517&srv=m3qloss8x8br&i=0.4&sp=500&p1=m3qloss8x8br&p2=m3qloss8x8br&asn=28118"]
+          },
+          {
+            "titulo": "T1:E23 - El origen de la obediencia ciega II",
+            "sinopsis": "La investigación lleva a los estudiantes a enfrentarse a nuevos enemigos.",
+            "iframes": ["https://claqgkdce4tc.cdn-centaurus.com/hls2/01/03798/jm2mrj0ju6h3_h/master.m3u8?t=rSHwu8YQb2jOGcjjOQ6fbEGu_8mLO5TQ8huCaeRiDWE&s=1747925473&e=129600&f=18993523&srv=58w9twdqed1w&i=0.4&sp=500&p1=58w9twdqed1w&p2=58w9twdqed1w&asn=28118"]
+          },
+          {
+            "titulo": "T1:E24 - Cómplices",
+            "sinopsis": "Yuji y Nobara enfrentan las consecuencias de sus acciones en la batalla final.",
+            "iframes": ["https://s0mlxzpt0qgc8.cdn-centaurus.com/hls2/01/03798/pnodhgkkdf4h_h/index-v1-a1.m3u8?t=a2-6gwDDn0SG16IzvO02sLJt_xt5gPKrk2Orjbrd90w&s=1747925482&e=129600&f=18993530&srv=vr4pcjm18sa1&i=0.4&sp=500&p1=vr4pcjm18sa1&p2=vr4pcjm18sa1&asn=28118"]
+          }
+        ]
+      },
+      {
+        "numero": 2,
+        "episodios": [
+          {
+            "titulo": "T2:E1 - Inventario Oculto",
+            "sinopsis": "Gojo y Geto, estudiantes de segundo año, reciben la misión de escoltar a Riko Amanai, el Recipiente de Plasma Estelar, al encuentro con el Maestro Tengen.",
+            "iframes": ["https://27u55xdzmm9q.cdn-centaurus.com/hls2/01/03798/adh59axzat00_h/index-v1-a1.m3u8?t=xIQjn0TRvU5DFhi1PGEAtIAKfc8aXY9rhwr8IlzeD0w&s=1747926347&e=129600&f=18993131&srv=ejxchamsg0ez&i=0.4&sp=500&p1=ejxchamsg0ez&p2=ejxchamsg0ez&asn=28118"]
+          },
+          {
+            "titulo": "T2:E2 - Inventario Oculto: Parte 2",
+            "sinopsis": "La misión de escolta se complica cuando un asesino no chamán intenta eliminar a Riko Amanai, poniendo en peligro la vida de todos.",
+            "iframes": ["https://zq62mmaomhqa.cdn-centaurus.com/hls2/01/03798/h9oqswpuivfb_h/master.m3u8?t=5kWLe3FOhNmLam-g_p1SCPgkfv6wcchPVd42y6AN1ys&s=1747926366&e=129600&f=18993132&srv=d7izxzkm5jvh&i=0.4&sp=500&p1=d7izxzkm5jvh&p2=d7izxzkm5jvh&asn=28118"]
+          },
+          {
+            "titulo": "T2:E3 - Inventario Oculto: Parte 3",
+            "sinopsis": "Gojo y Geto enfrentan desafíos crecientes mientras intentan proteger a Riko de amenazas cada vez más peligrosas.",
+            "iframes": ["https://p5qxmilmdj.cdn-centaurus.com/hls2/01/03798/ivshafi8ratb_h/index-v1-a1.m3u8?t=UVVUWkvpE4mNRAp8wvwyMJeUxmB6aWwERiEzPq-QYWM&s=1747926380&e=129600&f=18993135&srv=p782h1vj3cwc&i=0.4&sp=500&p1=p782h1vj3cwc&p2=p782h1vj3cwc&asn=28118"]
+          },
+          {
+            "titulo": "T2:E4 - Inventario Oculto: Parte 4",
+            "sinopsis": "La tensión aumenta cuando los enemigos se acercan y la determinación de Gojo y Geto es puesta a prueba.",
+            "iframes": ["https://s0mlxzpt0qgc8.cdn-centaurus.com/hls2/01/03798/vzu19z945r05_h/index-v1-a1.m3u8?t=iQeOFbmhrHv9gnbwwU-VGWC0bQ76xnXak7hUh4zBUs4&s=1747926392&e=129600&f=18993134&srv=w55h4e89nvet&i=0.4&sp=500&p1=w55h4e89nvet&p2=w55h4e89nvet&asn=28118"]
+          },
+          {
+            "titulo": "T2:E5 - Muerte Prematura",
+            "sinopsis": "Los eventos culminan en una tragedia que cambiará para siempre la relación entre Gojo y Geto.",
+            "iframes": ["https://lvvb9d6p7p.cdn-centaurus.com/hls2/01/03798/e8fv3v6bnbx7_h/index-v1-a1.m3u8?t=e0Eb3vESXACoCyioYJvjsDK6XiJE0yN84XjXvnNwyR0&s=1747926403&e=129600&f=18993133&srv=aobx2iskdwtw&i=0.4&sp=500&p1=aobx2iskdwtw&p2=aobx2iskdwtw&asn=28118"]
+          },
+          {
+            "titulo": "T2:E6 - Incidente de Shibuya: Parte 1",
+            "sinopsis": "En la noche de Halloween, una barrera misteriosa encierra a los ciudadanos en Shibuya, marcando el inicio de un conflicto devastador.",
+            "iframes": ["https://zq62mmaomhqa.cdn-centaurus.com/hls2/01/01480/quf1zyildi97_n/index-v1-a1.m3u8?t=WZn6l1A1FhbM9-Li3rkh3z3L4IPOHt7bozO2f_o3h0k&s=1747926414&e=129600&f=18993137&srv=y60mtxjwsl4c&i=0.4&sp=500&p1=y60mtxjwsl4c&p2=y60mtxjwsl4c&asn=28118"]
+          },
+          {
+            "titulo": "T2:E7 - Incidente de Shibuya: Parte 2",
+            "sinopsis": "Los hechiceros de Jujutsu se movilizan para enfrentar la amenaza en Shibuya mientras descubren la magnitud del plan enemigo.",
+            "iframes": ["https://82psw98llfa.cdn-centaurus.com/hls2/01/01606/a47s9t4vovlt_n/index-v1-a1.m3u8?t=I6OnIdcZU2OMbbencUxSU26_C9ekeRBh5HGT-vvSBwY&s=1747926433&e=129600&f=18993142&srv=ejxchamsg0ez&i=0.4&sp=500&p1=ejxchamsg0ez&p2=ejxchamsg0ez&asn=28118"]
+          },
+          {
+            "titulo": "T2:E8 - Incidente de Shibuya: Parte 3",
+            "sinopsis": "Las batallas se intensifican y los hechiceros enfrentan desafíos sin precedentes en su intento por rescatar a los atrapados.",
+            "iframes": ["https://lvvb9d6p7p.cdn-centaurus.com/hls2/01/01803/8rta8xnvuy57_n/index-v1-a1.m3u8?t=bPvKbhsILk-UHWasAQcLb2Rh69SA2wc4QeV1JC9TkW4&s=1747926446&e=129600&f=18993139&srv=n4xmwhf0t7q2&i=0.4&sp=500&p1=n4xmwhf0t7q2&p2=n4xmwhf0t7q2&asn=28118"]
+          },
+          {
+            "titulo": "T2:E9 - Incidente de Shibuya: Parte 4",
+            "sinopsis": "La situación en Shibuya se vuelve cada vez más caótica, y las pérdidas comienzan a acumularse.",
+            "iframes": ["https://g4vsrqvtrj.cdn-centaurus.com/hls2/01/03798/sz9tp986um4i_h/index-v1-a1.m3u8?t=0ZnVHBuMgvH2pj6nSxGFCtC50x-7QybZspshGpMB_l4&s=1747926456&e=129600&f=18993140&srv=ogry5xthqrpf&i=0.4&sp=500&p1=ogry5xthqrpf&p2=ogry5xthqrpf&asn=28118"]
+          },
+          {
+            "titulo": "T2:E10 - Incidente de Shibuya: Parte 5",
+            "sinopsis": "Los hechiceros luchan desesperadamente por contener la amenaza mientras enfrentan decisiones difíciles.",
+            "iframes": ["https://s0mlxzpt0qgc8.cdn-centaurus.com/hls2/01/03798/3k1yh7tlt85k_h/index-v1-a1.m3u8?t=p4YTXVFgR3DK_oqKwNsXAHmFBgLE26NloIzd-oo9yMg&s=1747926465&e=129600&f=18993141&srv=p39q76abj97f&i=0.4&sp=500&p1=p39q76abj97f&p2=p39q76abj97f&asn=28118"]
+          },
+          {
+            "titulo": "T2:E11 - Incidente de Shibuya: Parte 6",
+            "sinopsis": "La batalla alcanza su punto crítico y los secretos comienzan a revelarse, cambiando el curso del conflicto.",
+            "iframes": ["https://ye0r0rrinu.cdn-centaurus.com/hls2/01/03798/yyq4b5im4510_h/index-v1-a1.m3u8?t=-7kxztQIhKmF01qjG1DauOFL8ThJxgrcDuFojf_hwOA&s=1747926475&e=129600&f=18993144&srv=bkwk8g79&i=0.4&sp=500&p1=bkwk8g79&p2=bkwk8g79&asn=28118"]
+          },
+          {
+            "titulo": "T2:E12 - Incidente de Shibuya: Parte 7",
+            "sinopsis": "Las alianzas se ponen a prueba y los hechiceros deben adaptarse rápidamente a las nuevas circunstancias.",
+            "iframes": ["https://lvvb9d6p7p.cdn-centaurus.com/hls2/01/02190/ruzd0kf4di94_h/index-v1-a1.m3u8?t=O-xECBIXrJIezeoUo7_DRBskymQD0E8ByC4y94XlHVk&s=1747926488&e=129600&f=18993143&srv=rfr02gmo75cn&i=0.4&sp=500&p1=rfr02gmo75cn&p2=rfr02gmo75cn&asn=28118"]
+          },
+          {
+            "titulo": "T2:E13 - Incidente de Shibuya: Parte 8",
+            "sinopsis": "La lucha por Shibuya continúa con enfrentamientos cada vez más intensos y consecuencias impredecibles.",
+            "iframes": ["https://27u55xdzmm9q.cdn-centaurus.com/hls2/01/02245/jifjlyejbgjy_h/index-v1-a1.m3u8?t=Vjrv8rVes0mjrYVxQA8ptnHpwhcDVK_F4sHYTMJwILc&s=1747926498&e=129600&f=18993145&srv=n3hekrhru6pz&i=0.4&sp=500&p1=n3hekrhru6pz&p2=n3hekrhru6pz&asn=28118"]
+          },
+          {
+            "titulo": "T2:E14 - Incidente de Shibuya: Parte 9",
+            "sinopsis": "Los hechiceros enfrentan a enemigos formidables mientras intentan proteger a los civiles atrapados.",
+            "iframes": ["https://lu1r85hg8m.cdn-centaurus.com/hls2/01/02290/jueynbj04j1j_h/index-v1-a1.m3u8?t=zI4hHR56FwdQoTCBfHlOwTLuazu0SmKQApTBo4EGb0g&s=1747926506&e=129600&f=18993148&srv=vcj3wz7jxxd4&i=0.4&sp=500&p1=vcj3wz7jxxd4&p2=vcj3wz7jxxd4&asn=28118"]
+          },
+          {
+            "titulo": "T2:E15 - Incidente de Shibuya: Parte 10",
+            "sinopsis": "Las estrategias cambian y los hechiceros deben adaptarse rápidamente para sobrevivir.",
+            "iframes": ["https://r63hfpdmodtc.cdn-centaurus.com/hls2/01/02349/cl8wdv41nybb_h/index-v1-a1.m3u8?t=VTVxMfe1OuO9zD3-43XLVUIWU875t8UufvWEKUerufs&s=1747926517&e=129600&f=18993158&srv=yvrvdzzhgbz3&i=0.4&sp=500&p1=yvrvdzzhgbz3&p2=yvrvdzzhgbz3&asn=28118"]
+          },
+          {
+            "titulo": "T2:E16 - Incidente de Shibuya: Parte 11",
+            "sinopsis": "La desesperación se apodera de los combatientes mientras las pérdidas personales se acumulan.",
+            "iframes": ["https://p2qxmiasglj.cdn-centaurus.com/hls2/01/02407/k3wnfw9wxzpo_h/index-v1-a1.m3u8?t=ox5WeG-T935bkQODPvTq9aiQ_cevdr5jtWFmzNmtla0&s=1747926526&e=129600&f=18993160&srv=h4bsxjloe68y&i=0.4&sp=500&p1=h4bsxjloe68y&p2=h4bsxjloe68y&asn=28118"]
+          },
+          {
+            "titulo": "T2:E17 - Incidente de Shibuya: Parte 12",
+            "sinopsis": "Los hechiceros descubren la verdadera magnitud del plan enemigo y deben actuar con rapidez.",
+            "iframes": ["https://zhioihhf5jp4tuz.cdn-centaurus.com/hls2/01/02462/yrrl3k8t4w61_h/index-v1-a1.m3u8?t=smyJd4D_16_c3tjWccCtg7uIme-exjSbhNYItUrSMik&s=1747926536&e=129600&f=18993162&srv=ty1p3s7t9w4o&i=0.4&sp=500&p1=ty1p3s7t9w4o&p2=ty1p3s7t9w4o&asn=28118"]
+          },
+          {
+            "titulo": "T2:E18 - Incidente de Shibuya: Parte 13",
+            "sinopsis": "Las batallas alcanzan su clímax y los hechiceros deben tomar decisiones críticas.",
+            "iframes": ["https://jdevchpxbgc6.cdn-centaurus.com/hls2/01/02533/idke7vjbu9bt_h/index-v1-a1.m3u8?t=KB1UWnPL-1X58QKwq_Xkalf3XJcvuivsln4TjdXNIl8&s=1747926545&e=129600&f=18993150&srv=ejxchamsg0ez&i=0.4&sp=500&p1=ejxchamsg0ez&p2=ejxchamsg0ez&asn=28118"]
+          },
+          {
+            "titulo": "T2:E19 - Incidente de Shibuya: Parte 14",
+            "sinopsis": "El destino de Shibuya pende de un hilo mientras los hechiceros luchan con todas sus fuerzas.",
+            "iframes": ["https://s0mlxzpt0qgc8.cdn-centaurus.com/hls2/01/02583/hk7ajkg27joq_h/index-v1-a1.m3u8?t=Eitv6e7RLwtSwh4vNdVBOfDC0pwYETITIdsrNk9IMLA&s=1747926556&e=129600&f=18993152&srv=ji9uy3hmym8e&i=0.4&sp=500&p1=ji9uy3hmym8e&p2=ji9uy3hmym8e&asn=28118"]
+          },
+          {
+            "titulo": "T2:E20 - Incidente de Shibuya: Parte 15",
+            "sinopsis": "Los enfrentamientos finales determinan el futuro de los hechiceros y de la ciudad.",
+            "iframes": ["https://kfo8mkce0fzdhlq.cdn-centaurus.com/hls2/01/02637/h306jopgg6w7_h/index-v1-a1.m3u8?t=tF4BuRCwn5l031Mn61IFJSthwspJTovTnUJHXmjzI1Q&s=1747926576&e=129600&f=18993153&srv=rtj0thf2kbal&i=0.4&sp=500&p1=rtj0thf2kbal&p2=rtj0thf2kbal&asn=28118"]
+          },
+          {
+            "titulo": "T2:E21 - Incidente de Shibuya: Parte 16",
+            "sinopsis": "Las consecuencias de la batalla se hacen evidentes y los sobrevivientes deben enfrentar la realidad.",
+            "iframes": ["https://zq62mmaomhqa.cdn-centaurus.com/hls2/01/02717/orduuu9vsndz_h/index-v1-a1.m3u8?t=1Ww_4U2GJ4j7igho-y8A20pUCcoNJZTSPEHjkIw8izM&s=1747926584&e=129600&f=18993159&srv=vr4pcjm18sa1&i=0.4&sp=500&p1=vr4pcjm18sa1&p2=vr4pcjm18sa1&asn=28118"]
+          },
+          {
+            "titulo": "T2:E22 - Incidente de Shibuya: Parte 17",
+            "sinopsis": "Los hechiceros comienzan a reconstruir mientras enfrentan las secuelas emocionales del conflicto.",
+            "iframes": ["https://r63hfpdmodtc.cdn-centaurus.com/hls2/01/02772/8z5tfv0cm2wj_h/index-v1-a1.m3u8?t=u8u0v4f8AH5FVcfPe3iLwjEZ_MjusFOBCrwT95u29y0&s=1747926595&e=129600&f=18993155&srv=b2a52u9wjcr9&i=0.4&sp=500&p1=b2a52u9wjcr9&p2=b2a52u9wjcr9&asn=28118"]
+          },
+          {
+            "titulo": "T2:E23 - Incidente de Shibuya: Parte 18",
+            "sinopsis": "El mundo de los hechiceros cambia para siempre y se establecen nuevos caminos para el futuro.",
+            "iframes": ["https://s0mlxzpt0qgc8.cdn-centaurus.com/hls2/01/02829/9x0vfxyglabr_h/index-v1-a1.m3u8?t=sZWcn0hexYlayNHOooMalKfHAeTwSYqY5LCw76-L1jk&s=1747926606&e=129600&f=18993156&srv=nl0clz0vw31g&i=0.4&sp=500&p1=nl0clz0vw31g&p2=nl0clz0vw31g&asn=28118"]
+          }
+        ]
+      }
+    ]
+  }
+]

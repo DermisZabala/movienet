@@ -1,0 +1,409 @@
+/* Reset y Fuentes */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    line-height: 1.7;
+    background: linear-gradient(to bottom right, #00182f, #002f50);
+    color: #e0e0e0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    font-size: 16px;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Poppins', sans-serif;
+    color: #add8e6;
+    margin-bottom: 0.75em;
+}
+h1 { font-size: 2.2em; }
+h2 { font-size: 1.8em; }
+h3 { font-size: 1.5em; }
+
+a {
+    color: #61dafb;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+a:hover {
+    color: #82eaff;
+    text-decoration: underline;
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 20px 15px;
+}
+
+/* Header y Navegación */
+.site-header {
+    background-color: rgba(0, 24, 47, 0.8);
+    padding: 1rem 0;
+    border-bottom: 2px solid #007bff;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    backdrop-filter: blur(5px);
+}
+
+.nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.site-logo {
+    font-size: 1.8em;
+    font-weight: 700;
+    color: #61dafb;
+    text-decoration: none;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    align-items: center;
+}
+.nav-links li { margin-left: 25px; }
+.nav-links a {
+    color: #e0e0e0;
+    font-weight: 400;
+    padding: 8px 12px;
+    border-radius: 4px;
+    transition: background-color 0.3s, color 0.3s;
+}
+.nav-links a:hover, .nav-links a.active {
+    background-color: #007bff;
+    color: #fff;
+    text-decoration: none;
+}
+
+.search-bar {
+    display: flex;
+    margin-left: auto;
+    margin-top: 10px;
+}
+@media (min-width: 880px) {
+    .search-bar {
+        margin-left: 25px;
+        margin-top: 0;
+    }
+}
+.search-bar input[type="search"] {
+    padding: 10px 15px;
+    border: 1px solid #004080;
+    border-radius: 20px 0 0 20px;
+    background-color: #002a50;
+    color: #e0e0e0;
+    outline: none;
+    min-width: 150px;
+}
+.search-bar input[type="search"]::placeholder { color: #a0a0a0; }
+.search-bar button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 0 20px 20px 0;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background-color 0.3s;
+}
+.search-bar button:hover { background-color: #0056b3; }
+
+/* Menú Hamburguesa */
+.nav-toggle { display: none; background: none; border: none; cursor: pointer; padding: 10px; }
+.hamburger { display: block; width: 25px; height: 3px; background-color: #e0e0e0; position: relative; transition: background-color 0.3s ease-in-out; }
+.hamburger::before, .hamburger::after { content: ''; position: absolute; width: 100%; height: 3px; background-color: #e0e0e0; left: 0; transition: transform 0.3s ease-in-out, top 0.3s ease-in-out; }
+.hamburger::before { top: -8px; }
+.hamburger::after { top: 8px; }
+.nav-active .nav-links { display: flex; }
+.nav-active .hamburger { background-color: transparent; }
+.nav-active .hamburger::before { transform: rotate(45deg); top: 0; }
+.nav-active .hamburger::after { transform: rotate(-45deg); top: 0; }
+
+/* Contenido Principal */
+.site-main { flex-grow: 1; padding-top: 20px; padding-bottom: 40px; }
+
+/* Página de Inicio */
+.welcome-section { text-align: center; padding: 50px 20px; margin-bottom: 40px; background-color: rgba(0, 42, 80, 0.7); border-radius: 12px; box-shadow: 0 8px 25px rgba(0, 123, 255, 0.1); }
+.welcome-section h1 { color: #61dafb; }
+.main-sections-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; }
+.section-card { display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; background-color: #003366; padding: 30px 20px; border-radius: 10px; text-decoration: none; color: #e0e0e0; transition: transform 0.3s ease, box-shadow 0.3s ease; box-shadow: 0 5px 15px rgba(0,0,0,0.2); }
+.section-card:hover { transform: translateY(-8px); box-shadow: 0 12px 30px rgba(0, 123, 255, 0.2); background-color: #004080; }
+.section-card__icon { font-size: 3em; margin-bottom: 15px; line-height: 1; }
+.section-card h2 { color: #add8e6; }
+
+/* Tarjetas de Contenido (Genéricas) */
+.section-title { margin-bottom: 30px; text-align: center; font-size: 2.5em; color: #61dafb; }
+.card-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 25px; margin-bottom: 30px; }
+.card { background-color: #102a43; border-radius: 8px; overflow: hidden; box-shadow: 0 6px 12px rgba(0,0,0,0.3); transition: transform 0.3s ease, box-shadow 0.3s ease; display: none; }
+.card.visible { display: block; }
+.card:hover { transform: translateY(-5px) scale(1.03); box-shadow: 0 10px 20px rgba(0, 123, 255, 0.25); }
+.card__link { text-decoration: none; color: inherit; display: block; }
+.card__image { width: 100%; aspect-ratio: 2/3; object-fit: cover; display: block; border-bottom: 3px solid #007bff; }
+.card__content { padding: 15px; }
+.card__title { font-size: 1.1em; margin-bottom: 5px; color: #add8e6; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.card__year, .card__rating { font-size: 0.9em; color: #b0c4de; margin-bottom: 3px; }
+
+/* Botones Generales */
+.button { display: inline-block; padding: 10px 20px; border-radius: 20px; border: none; cursor: pointer; font-weight: 600; text-decoration: none; text-align: center; transition: background-color 0.3s ease, transform 0.2s ease; font-family: 'Poppins', sans-serif; }
+.button:hover { transform: translateY(-2px); }
+.button--primary { background-color: #007bff; color: #fff; }
+.button--primary:hover { background-color: #0056b3; }
+.button--secondary { background-color: #6c757d; color: #fff; }
+.button--secondary:hover { background-color: #545b62; }
+.button--danger { background-color: #dc3545; color: #fff; }
+.button--danger:hover { background-color: #c82333; }
+.button--small { padding: 6px 12px; font-size: 0.9em; }
+.button--load-more { display: block; margin: 30px auto; min-width: 180px; }
+.button--load-more.hidden { display: none; }
+
+/* Página de Detalle Genérica */
+.detail-page { background-color: #002a50; padding: 25px; border-radius: 10px; box-shadow: 0 8px 25px rgba(0,0,0,0.2); }
+.content-detail__header { display: flex; gap: 30px; margin-bottom: 30px; flex-wrap: wrap; }
+.content-detail__poster { width: 280px; max-width: 100%; height: auto; border-radius: 8px; object-fit: cover; box-shadow: 0 5px 15px rgba(0,0,0,0.3); align-self: flex-start; }
+.content-detail__info { flex: 1; min-width: 300px; }
+.content-detail__info h1 { color: #61dafb; margin-bottom: 10px; font-size: 2.5em; }
+.content-detail__info p { margin-bottom: 8px; color: #c0d0e0; }
+.content-detail__info h3 { margin-top: 20px; margin-bottom: 10px; color: #add8e6; border-bottom: 1px solid #004080; padding-bottom: 5px; }
+.content-detail__synopsis { color: #d0e0f0; line-height: 1.8; }
+.content-detail__player-section, .seasons-episodes-section { margin-top: 40px; padding-top: 20px; border-top: 1px solid #004080; }
+.content-detail__player-section h2, .seasons-episodes-section h2 { margin-bottom: 20px; text-align: center; }
+
+/* --- INICIO ESTILOS PARA PÁGINA DE DETALLE DE PELÍCULA --- */
+.movie-detail-page .content-detail__poster { border: 2px solid #005fa3; box-shadow: 0 10px 30px rgba(0, 80, 150, 0.35); }
+@media (min-width: 881px) { .movie-detail-page .content-detail__poster { width: 300px; } }
+.movie-detail-page .content-detail__info h1 { font-size: 2.7em; text-shadow: 0 0 8px rgba(97, 218, 251, 0.3); }
+@media (max-width: 880px) { .movie-detail-page .content-detail__info h1 { font-size: 2.1em; } }
+@media (max-width: 480px) { .movie-detail-page .content-detail__info h1 { font-size: 1.9em; } }
+.movie-detail-page .content-detail__synopsis { font-size: 1.03em; line-height: 1.85; color: #ddeeff; }
+.movie-detail-page .content-detail__player-section h2 { font-size: 2.1em; color: #61dafb; margin-bottom: 25px; }
+.movie-detail-page .player-options-controls { background-color: rgba(0, 25, 51, 0.65); padding: 20px 15px; border-radius: 8px; margin-top: 30px; border: 1px solid #003c78; display: flex; flex-direction: column; align-items: center; gap: 15px; }
+.movie-detail-page .player-options-controls h4 { color: #add8e6; margin-bottom: 5px; font-size: 1.3em; width: 100%; text-align: center; padding-bottom: 10px; border-bottom: 1px solid #004080; }
+/* --- FIN ESTILOS PARA PÁGINA DE DETALLE DE PELÍCULA --- */
+
+/* --- ESTILOS PARA EL REPRODUCTOR (IFRAME) --- */
+.video-player-wrapper { 
+    max-width: 900px; 
+    margin: 0 auto 25px auto; 
+    border-radius: 8px; 
+    overflow: hidden; 
+    box-shadow: 0 5px 15px rgba(0,0,0,0.4); 
+    background-color: #000; /* Fondo para el wrapper, útil si el iframe tarda en cargar */
+}
+.video-player-container { 
+    position: relative; 
+    width: 100%; 
+    padding-bottom: 56.25%; /* 16:9 Aspect Ratio */ 
+    height: 0; 
+    overflow: hidden; 
+}
+.video-player-container > iframe { /* Aplicar a iframe */
+    position: absolute; 
+    top: 0; 
+    left: 0; 
+    width: 100%; 
+    height: 100%; 
+    border: none; 
+}
+
+/* ESTILOS ESPECÍFICOS DE VIDEO.JS COMENTADOS YA QUE SE USA IFRAME */
+/*
+.video-js { font-family: 'Roboto', sans-serif; background-color: #000; }
+.video-js .vjs-big-play-button { 
+    position: absolute !important; 
+    top: 50% !important; 
+    left: 50% !important; 
+    right: auto !important; 
+    bottom: auto !important; 
+    margin: 0 !important; 
+    transform: translate(-50%, -50%) !important; 
+    line-height: 1.5em; 
+    height: 1.63332em; 
+    width: 3em; 
+    border: 0.06666em solid #fff; 
+    background-color: rgba(43, 51, 63, 0.7); 
+    transition: all 0.4s; 
+    border-radius: 0.3em; 
+}
+.video-js .vjs-control-bar { 
+    background-color: rgba(0, 0, 0, 0.75); 
+    color: #e0e0e0; 
+    font-size: 0.9em; 
+    height: 3.5em; 
+}
+.video-js .vjs-button > .vjs-icon-placeholder::before { 
+    color: #e0e0e0; 
+    font-size: 1.6em; 
+    line-height: 2.1; 
+}
+.video-js .vjs-control-bar .vjs-button:hover .vjs-icon-placeholder::before, 
+.video-js .vjs-control-bar .vjs-button:focus .vjs-icon-placeholder::before { 
+    color: #007bff; 
+    text-shadow: 0 0 5px #007bff; 
+}
+.video-js .vjs-load-progress { background-color: rgba(0, 123, 255, 0.3); }
+.video-js .vjs-play-progress { background-color: #007bff; }
+.video-js .vjs-play-progress.vjs-slider-bar::before { color: #007bff; }
+.video-js .vjs-slider-handle { 
+    background-color: #007bff; 
+    border: 2px solid #fff; 
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); 
+}
+.video-js .vjs-current-time, 
+.video-js .vjs-duration, 
+.video-js .vjs-time-divider { 
+    display: block; 
+    color: #e0e0e0; 
+    line-height: 3.5em; 
+}
+.video-js .vjs-fullscreen-control { order: 99; }
+.video-js .vjs-modal-dialog { 
+    background-color: rgba(0, 0, 0, 0.8); 
+    color: #fff; 
+}
+.video-js .vjs-modal-dialog .vjs-modal-dialog-content { 
+    font-size: 1.2em; 
+    padding: 20px; 
+}
+*/
+/* --- FIN ESTILOS PARA EL REPRODUCTOR (IFRAME) --- */
+
+
+/* Controles de opciones y reporte */
+.player-options-controls { text-align: center; margin-top: 20px; display: flex; flex-direction: column; /* Alinea H4 y los contenedores de botones verticalmente */ align-items: center; gap: 15px; }
+.player-options-controls h4 { color: #add8e6; margin-bottom: 10px; font-size: 1.3em; width: 100%; text-align: center; padding-bottom: 10px; border-bottom: 1px solid #004080; }
+.server-selection-controls { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin-bottom: 10px; }
+.server-selection-controls .button { flex-grow: 1; min-width: 120px; max-width: 180px; }
+.report-controls { display: flex; justify-content: center; width: 100%; }
+.report-controls .button { min-width: 150px; max-width: 220px; }
+
+/* --- Estilos para Bloques de Temporada Colapsables --- */
+.season-block {
+    margin-bottom: 15px;
+    background-color: rgba(0, 51, 102, 0.5);
+    border-radius: 8px;
+    overflow: hidden; /* Importante */
+}
+.season-title { /* Esta es la clase para el h3 que contiene "Temporada N" */
+    color: #61dafb;
+    padding: 15px 20px;
+    margin: 0;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: background-color 0.2s ease;
+    font-size: 1.5em; /* Hereda de h3 pero se puede redefinir */
+}
+.season-title:hover {
+    background-color: rgba(0, 80, 150, 0.3);
+}
+.season-toggle-icon {
+    font-size: 0.8em;
+    transition: transform 0.3s ease-out;
+    display: inline-block;
+}
+.season-title.expanded .season-toggle-icon {
+    transform: rotate(180deg);
+}
+.season-episodes-content {
+    padding: 0 20px;
+    background-color: rgba(0, 41, 82, 0.3);
+    max-height: 0; /* INICIALMENTE CERRADO */
+    overflow: hidden;
+    transition: max-height 0.4s ease-out, padding-top 0.4s ease-out, padding-bottom 0.4s ease-out;
+}
+.season-episodes-content.expanded {
+    /* max-height se establece con JS a scrollHeight */
+    padding-top: 15px;
+    padding-bottom: 20px;
+    border-top: 1px solid rgba(0, 123, 255, 0.3);
+}
+/* --- FIN Estilos para Bloques de Temporada Colapsables --- */
+
+/* Series/Anime Detalles - Lista de Episodios */
+.episode-list { list-style: none; padding-left: 0; } /* Ya está dentro de .season-episodes-content */
+.episode-item { padding: 12px 0; border-bottom: 1px solid #004080; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 10px; }
+.episode-item:last-child { border-bottom: none; }
+.episode-item__info { flex: 1; min-width: 180px; }
+.episode-item__title { font-weight: 600; color: #c0d0e0; margin-bottom: 5px; }
+.episode-item__synopsis { font-size: 0.9em; color: #a0b0c0; margin-bottom: 0; }
+.episode-item .button { flex-shrink: 0; }
+#current-episode-title-player { text-align: center; margin-bottom: 15px; }
+.episode-controls { /* Ya definido en .player-options-controls */ }
+.episode-controls .button { margin: 5px; }
+
+
+/* Mensajes */
+.message { padding: 15px; border-radius: 5px; margin: 20px 0; text-align: center; }
+.message--error { background-color: #721c24; color: #f8d7da; border: 1px solid #f5c6cb;}
+.message--warning { background-color: #856404; color: #fff3cd; border: 1px solid #ffeeba;}
+.message--info { background-color: #004085; color: #cce5ff; border: 1px solid #b8daff;}
+.message--success { background-color: #155724; color: #d4edda; border: 1px solid #c3e6cb;}
+
+/* Espacios Publicitarios */
+.ad-space { background-color: rgba(108, 117, 125, 0.2); border: 1px dashed #007bff; color: #adb5bd; text-align: center; padding: 20px; margin: 25px auto; border-radius: 5px; display: flex; align-items: center; justify-content: center; font-style: italic; }
+.ad-banner-top, .ad-banner-bottom { width: 100%; max-width: 970px; min-height: 90px; }
+.ad-central { width: 80%; max-width: 728px; min-height: 90px; }
+.ad-sidebar { width: 300px; min-height: 250px; float: none; margin-top: 40px; }
+.ad-detail-page { width: 100%; max-width: 728px; min-height: 90px; margin-top: 30px; }
+
+/* Footer */
+.site-footer { background-color: #00182f; color: #a0b0c0; text-align: center; padding: 30px 0; border-top: 1px solid #004080; margin-top: auto; }
+
+/* Responsividad */
+@media (max-width: 880px) {
+    .nav-toggle { display: block; order: 1; }
+    .search-bar { order: 2; width: 100%; margin-left:0; margin-top: 10px; }
+    .nav-links { display: none; flex-direction: column; width: 100%; position: absolute; top: 100%; left: 0; background-color: rgba(0, 24, 47, 0.95); padding: 10px 0; order: 3; }
+    .nav-links li { margin: 10px 0; width: 100%; text-align: center; }
+    .nav-links a { display: block; padding: 12px; }
+    .nav-active .nav-links { display: flex; }
+
+    .card-grid { grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); }
+    .content-detail__header { flex-direction: column; align-items: center; text-align: center; }
+    .content-detail__poster { margin: 0 auto 20px auto; width: 220px; }
+    .ad-sidebar { width: 90%; max-width: 300px; margin: 20px auto; }
+    h1 { font-size: 1.8em; }
+    h2 { font-size: 1.5em; }
+
+    .server-selection-controls .button { max-width: 150px; font-size: 0.9em; padding: 8px 15px;}
+    .report-controls .button {max-width: 180px; font-size: 0.9em; padding: 8px 15px;}
+
+
+    .episode-item { flex-direction: column; align-items: flex-start; }
+    .episode-item__info { width: 100%; margin-bottom: 10px; }
+    .episode-item .button { width: 100%; max-width: 250px; align-self: center; margin-left: 0; }
+
+    .season-title { font-size: 1.3em; padding: 12px 15px;}
+}
+
+@media (max-width: 480px) {
+    .card-grid { grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); gap: 15px; }
+    .card__title { font-size: 1em; }
+    .container { width: 95%; padding: 15px 10px; }
+    .site-logo { font-size: 1.6em; }
+    .search-bar input[type="search"] { min-width: 120px; padding: 8px 12px; }
+    .search-bar button { padding: 8px 15px; }
+    .button { padding: 8px 16px; font-size: 0.9em;}
+    .detail-page .content-detail__info h1 { font-size: 1.6em; }
+    .content-detail__poster { width: 180px; }
+
+    .movie-detail-page .player-options-controls h4,
+    .episode-controls h4 { font-size: 1.15em; }
+    .server-selection-controls .button { max-width: none; width: calc(50% - 5px); /* Dos botones por fila */ }
+    .report-controls .button { width: 100%; max-width: 200px; }
+    .season-title { font-size: 1.1em; padding: 10px 12px;}
+
+}

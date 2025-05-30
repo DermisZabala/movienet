@@ -1,0 +1,194 @@
+[
+  {
+    "id": "serie_001",
+    "titulo": "The Boys",
+    "sinopsis": "Un grupo de vigilantes se propone acabar con los superhéroes corruptos que abusan de sus superpoderes.",
+    "elenco": ["Karl Urban", "Jack Quaid", "Antony Starr"],
+    "anio": 2019,
+    "genero": ["Acción", "Comedia", "Crimen"],
+    "calificacion": 8.7,
+    "poster": "https://image.tmdb.org/t/p/w500/stTEycfG9928HYGEISBFaG1ngjM.jpg",
+    "temporadas": [
+      {
+        "numero": 1,
+        "episodios": [
+          {
+            "titulo": "T1:E1 - El nombre del juego",
+            "sinopsis": "Cuando un superhéroe mata por descuido a su novia, Hughie Campbell se une al grupo clandestino de Billy Butcher para exponer la verdad y hacer justicia.",
+            "iframes": ["https://62lcxnbxr456.premilkyway.com/hls2/01/03040/vufsqwnvizk7_,n,h,.urlset/index-f1-v1-a1.m3u8?t=15GGV56dIlBIf8E2mQP_e1FFPUWeeINKAo4CaWBpvRA&s=1747930485&e=129600&f=15200036&srv=jubDiYuWLQCqfHI&i=0.4&sp=500&p1=jubDiYuWLQCqfHI&p2=jubDiYuWLQCqfHI&asn=28118"]
+          },
+          {
+            "titulo": "T1:E2 - Cherry",
+            "sinopsis": "Butcher visita a una vieja amiga para conseguir información sobre un superhéroe. Hughie se infiltra en Vought.",
+            "iframes": ["https://wnsa7jyhmnmt12.premilkyway.com/hls2/01/03040/tfvzfzvyjrwk_,n,h,x,.urlset/index-f3-v1-a1.m3u8?t=FJj_B0vj8y0rOvUBPdtmycw8WFFAHpfNdeHInOC2n6M&s=1747930534&e=129600&f=15200031&srv=z13jtbat10fa85i&i=0.4&sp=500&p1=z13jtbat10fa85i&p2=z13jtbat10fa85i&asn=28118"]
+          },
+          {
+            "titulo": "T1:E3 - Consigue algo",
+            "sinopsis": "Los Boys intentan capturar a Translucent, mientras Hughie lucha con las consecuencias de sus acciones.",
+            "iframes": ["https://2goita23a7njj.premilkyway.com/hls2/01/03040/fvgxm25gvlir_,n,h,x,.urlset/index-f3-v1-a1.m3u8?t=DmWoXAx8qkSOCyp2erfp1jso5eghYI895MRnzYOattg&s=1747930647&e=129600&f=15200035&srv=3FjgDmcnea8S35m&i=0.4&sp=500&p1=3FjgDmcnea8S35m&p2=3FjgDmcnea8S35m&asn=28118"]
+          },
+          {
+            "titulo": "T1:E4 - La hembra de la especie",
+            "sinopsis": "El equipo descubre a una misteriosa mujer con habilidades letales y decide ayudarla.",
+            "iframes": ["https://qpljyz39awcoenfd.premilkyway.com/hls2/01/03040/8708n3fflra4_,n,h,x,.urlset/master.m3u8?t=QSLXqfIM8fQLUcJpFpSiZ9fCk6_OMFcw7mWKkpL942Q&s=1747930736&e=129600&f=15200110&srv=z13jtbat10fa85i&i=0.4&sp=500&p1=z13jtbat10fa85i&p2=z13jtbat10fa85i&asn=28118"]
+          },
+          {
+            "titulo": "T1:E5 - Bueno para el alma",
+            "sinopsis": "Starlight comienza a cuestionar los métodos de Los Siete mientras participa en una convención cristiana.",
+            "iframes": ["https://cuyyro04xrqrh.premilkyway.com/hls2/01/03040/i848cyfqo2dp_,n,h,x,.urlset/index-f3-v1-a1.m3u8?t=QZ8EHf3tzGNkbgYe9mMHqH2JjIPVBZo40bLAb5Afxfw&s=1747930749&e=129600&f=15200185&srv=jubDiYuWLQCqfHI&i=0.4&sp=500&p1=jubDiYuWLQCqfHI&p2=jubDiYuWLQCqfHI&asn=28118"]
+          },
+          {
+            "titulo": "T1:E6 - Los inocentes",
+            "sinopsis": "Butcher y Hughie investigan el pasado de Compound V, descubriendo secretos oscuros.",
+            "iframes": ["https://sedrfmwrpjxatem5.premilkyway.com/hls2/01/03040/6t56xdzt2yvc_,n,h,x,.urlset/index-f3-v1-a1.m3u8?t=hMoJUaSrx_1RFxGw4kU0qEM_ToJ_aJKpXfFOK9KQwkY&s=1747930808&e=129600&f=15200134&srv=jubDiYuWLQCqfHI&i=0.4&sp=500&p1=jubDiYuWLQCqfHI&p2=jubDiYuWLQCqfHI&asn=28118"]
+          },
+          {
+            "titulo": "T1:E7 - La autodestrucción",
+            "sinopsis": "Los Boys enfrentan consecuencias devastadoras mientras se acercan a la verdad sobre Vought.",
+            "iframes": ["https://x8oi6owwkjoewr.premilkyway.com/hls2/01/03040/ujgwd7om05ls_,n,h,x,.urlset/index-f3-v1-a1.m3u8?t=tKtxanMfOzRcuyOXWwqRYu3fTJB_cApvj61ibdys_Sk&s=1747930834&e=129600&f=15200246&srv=jubDiYuWLQCqfHI&i=0.4&sp=500&p1=jubDiYuWLQCqfHI&p2=jubDiYuWLQCqfHI&asn=28118"]
+          },
+          {
+            "titulo": "T1:E8 - Tú me encontraste",
+            "sinopsis": "El enfrentamiento final entre los Boys y Homelander revela verdades impactantes.",
+            "iframes": ["https://2goita23a7njj.premilkyway.com/hls2/01/03040/we87mto18dua_,n,h,x,.urlset/index-f3-v1-a1.m3u8?t=nOVeCi0OqKahVATuM-fK6nBul7Pqbhz81V4aTOxEe00&s=1747930857&e=129600&f=15200264&srv=jubDiYuWLQCqfHI&i=0.4&sp=500&p1=jubDiYuWLQCqfHI&p2=jubDiYuWLQCqfHI&asn=28118"]
+          }
+        ]
+      },
+      {
+        "numero": 2,
+        "episodios": [
+          {
+            "titulo": "T2:E1 - The Big Ride",
+            "sinopsis": "Los Boys están huyendo y deben adaptarse a su nueva situación mientras Vought presenta a Stormfront.",
+            "iframes": ["https://yhqd4yg264.premilkyway.com/hls2/01/03040/ra8fu2drckek_,n,h,.urlset/index-f2-v1-a1.m3u8?t=mAFKA2ATo6KcEaR8y3lId34US9PLm0bfEw4TrJ3cCQM&s=1747930946&e=129600&f=15201621&srv=jubDiYuWLQCqfHI&i=0.4&sp=500&p1=jubDiYuWLQCqfHI&p2=jubDiYuWLQCqfHI&asn=28118"]
+          },
+          {
+            "titulo": "T2:E2 - Proper Preparation and Planning",
+            "sinopsis": "Butcher regresa con el equipo, pero las tensiones aumentan. Homelander pasa tiempo con su nuevo 'hijo'.",
+            "iframes": ["https://62lcxnbxr456.premilkyway.com/hls2/01/03040/dihgcqbo22ny_,n,h,.urlset/index-f2-v1-a1.m3u8?t=Fn7CppIWfjB8A5CQwDrSbmGkp1XN6qWIRIUHnHWht4E&s=1747931011&e=129600&f=15201590&srv=js4BwLKgfmTMJmVh&i=0.4&sp=500&p1=js4BwLKgfmTMJmVh&p2=js4BwLKgfmTMJmVh&asn=28118"]
+          },
+          {
+            "titulo": "T2:E3 - Over the Hill with the Swords of a Thousand Men",
+            "sinopsis": "Una misión para capturar a un supervillano se complica, revelando más sobre Stormfront.",
+            "iframes": ["https://m5qilv3g2l.premilkyway.com/hls2/01/03040/fgbkb3088juh_,n,h,.urlset/index-f2-v1-a1.m3u8?t=0Fq4O8rmMPD35iSAS48JKsSU1Zs0S_3ArY9FK4CrjVQ&s=1747931034&e=129600&f=15201619&srv=Gy4KXLg7mXRDXE7k&i=0.4&sp=500&p1=Gy4KXLg7mXRDXE7k&p2=Gy4KXLg7mXRDXE7k&asn=28118"]
+          },
+          {
+            "titulo": "T2:E4 - Nothing Like It in the World",
+            "sinopsis": "Butcher busca a su esposa mientras Hughie y Starlight investigan el pasado de Liberty.",
+            "iframes": ["https://yhqd4yg264.premilkyway.com/hls2/01/03040/laexe3cl0va3_,n,h,.urlset/index-f2-v1-a1.m3u8?t=0CpZs7s0qs3AotwYlVo56C7V0v6Tt52OFTGEHF8G6FE&s=1747931050&e=129600&f=15201658&srv=3FjgDmcnea8S35m&i=0.4&sp=500&p1=3FjgDmcnea8S35m&p2=3FjgDmcnea8S35m&asn=28118"]
+          },
+          {
+            "titulo": "T2:E5 - We Gotta Go Now",
+            "sinopsis": "Los Boys se infiltran en una película de Vought para obtener información crucial.",
+            "iframes": ["https://wnsa7jyhmnmt12.premilkyway.com/hls2/01/03040/fbugb13gl1vz_,n,h,.urlset/index-f2-v1-a1.m3u8?t=l4fVCjxuekO_djdsN3RNcA1xeFazrDXwKXiiolf4jqw&s=1747931073&e=129600&f=15201684&srv=jubDiYuWLQCqfHI&i=0.4&sp=500&p1=jubDiYuWLQCqfHI&p2=jubDiYuWLQCqfHI&asn=28118"]
+          },
+          {
+            "titulo": "T2:E6 - The Bloody Doors Off",
+            "sinopsis": "El equipo descubre un hospital secreto donde Vought experimenta con Compound V.",
+            "iframes": ["https://2goita23a7njj.premilkyway.com/hls2/01/03040/emts1fzq3ktc_,n,h,.urlset/index-f2-v1-a1.m3u8?t=cXi7QclCbOzAeTHRZOMtSJx6n5f_0tSNqaO3oioaUGI&s=1747931104&e=129600&f=15201696&srv=jubDiYuWLQCqfHI&i=0.4&sp=500&p1=jubDiYuWLQCqfHI&p2=jubDiYuWLQCqfHI&asn=28118"]
+          },
+          {
+            "titulo": "T2:E7 - Butcher, Baker, Candlestick Maker",
+            "sinopsis": "La historia de fondo de Butcher se revela mientras el equipo enfrenta nuevas amenazas.",
+            "iframes": ["https://7f12638xuzfg.premilkyway.com/hls2/01/03040/gum0ah6ax5yt_,n,h,.urlset/index-f2-v1-a1.m3u8?t=OgvBEscdzXniiaHS7QVPUjaSP5QjdqbSI2m47S8WlWw&s=1747931119&e=129600&f=15201724&srv=3FjgDmcnea8S35m&i=0.4&sp=500&p1=3FjgDmcnea8S35m&p2=3FjgDmcnea8S35m&asn=28118"]
+          },
+          {
+            "titulo": "T2:E8 - What I Know",
+            "sinopsis": "En el clímax de la temporada, los Boys enfrentan a Stormfront y Homelander en una batalla decisiva.",
+            "iframes": ["https://mx9skjnui4es.premilkyway.com/hls2/01/03040/051ysr3jsqf5_,n,h,.urlset/index-f2-v1-a1.m3u8?t=u9Va4FLNdet05VU8u29wEjCRQvg1p1_Y9t5c50xTHYQ&s=1747931142&e=129600&f=15201919&srv=z13jtbat10fa85i&i=0.4&sp=500&p1=z13jtbat10fa85i&p2=z13jtbat10fa85i&asn=28118"]
+          }
+        ]
+      },
+      {
+        "numero": 3,
+        "episodios": [
+          {
+            "titulo": "T3:E1 - Payback",
+            "sinopsis": "Los Boys intentan adaptarse a un nuevo status quo mientras investigan a Soldier Boy.",
+            "iframes": ["https://m5qilv3g2l.premilkyway.com/hls2/01/03041/w4c4re20rrk2_,n,h,x,.urlset/index-f3-v1-a1.m3u8?t=CkxfNUPt8G_tTQMJyN9jRQmx6iod7Mm_jFPcnUTtwao&s=1747931272&e=129600&f=15209672&srv=3FjgDmcnea8S35m&i=0.4&sp=500&p1=3FjgDmcnea8S35m&p2=3FjgDmcnea8S35m&asn=28118"]
+          },
+          {
+            "titulo": "T3:E2 - The Only Man in the Sky",
+            "sinopsis": "Homelander celebra su cumpleaños mientras las tensiones aumentan dentro de Vought.",
+            "iframes": ["https://qpljyz39awcoenfd.premilkyway.com/hls2/01/03041/wdsem2zhj1mt_,n,h,x,.urlset/index-f3-v1-a1.m3u8?t=q6ebGuUmeoBibyZTNbW_m9cGyrt0L5gBIo_6mPY2Y_Q&s=1747931308&e=129600&f=15209532&srv=jubDiYuWLQCqfHI&i=0.4&sp=500&p1=jubDiYuWLQCqfHI&p2=jubDiYuWLQCqfHI&asn=28118"]
+          },
+          {
+            "titulo": "T3:E3 - Barbary Coast",
+            "sinopsis": "La investigación sobre Soldier Boy lleva al equipo a descubrir secretos del pasado.",
+            "iframes": ["https://rfognbc0mhhj.premilkyway.com/hls2/01/03041/kziejlo6zrp7_,n,h,x,.urlset/index-f3-v1-a1.m3u8?t=aZpdx2ElicAKpcLlSlses72-Fxs3_sDzj6kZaKZykGQ&s=1747931386&e=129600&f=15209580&srv=jubDiYuWLQCqfHI&i=0.4&sp=500&p1=jubDiYuWLQCqfHI&p2=jubDiYuWLQCqfHI&asn=28118"]
+          },
+          {
+            "titulo": "T3:E4 - Glorious Five Year Plan",
+            "sinopsis": "Butcher toma medidas extremas para nivelar el campo de juego contra los Supes.",
+            "iframes": ["https://62lcxnbxr456.premilkyway.com/hls2/01/03041/guftixxf2ckx_,n,h,x,.urlset/index-f3-v1-a1.m3u8?t=_fMzfPoV6LrNY-KEZW7j0n1c2lJNe752suDRff3C894&s=1747931416&e=129600&f=15209576&srv=3FjgDmcnea8S35m&i=0.4&sp=500&p1=3FjgDmcnea8S35m&p2=3FjgDmcnea8S35m&asn=28118"]
+          },
+          {
+            "titulo": "T3:E5 - The Last Time to Look on This World of Lies",
+            "sinopsis": "Los Boys enfrentan obstáculos mientras Homelander consolida su poder en Vought.",
+            "iframes": ["https://62lcxnbxr456.premilkyway.com/hls2/01/03041/k67vpmjlnvpv_,n,h,x,.urlset/index-f3-v1-a1.m3u8?t=E5daq4ZmWSaxFOlRqz7IPhBQC4_GEJpnzS_YWj51qbk&s=1747931433&e=129600&f=15209721&srv=3FjgDmcnea8S35m&i=0.4&sp=500&p1=3FjgDmcnea8S35m&p2=3FjgDmcnea8S35m&asn=28118"]
+          },
+          {
+            "titulo": "T3:E6 - Herogasm",
+            "sinopsis": "Una fiesta secreta de superhéroes revela verdades impactantes y lleva a un enfrentamiento épico.",
+            "iframes": ["https://yhqd4yg264.premilkyway.com/hls2/01/03041/afmmkv4l2i3h_,n,h,x,.urlset/index-f3-v1-a1.m3u8?t=GguwFmsgPy2WXDWqXlKUbnT1OGgnAxqaNqp2-W3SJ6M&s=1747931451&e=129600&f=15209694&srv=z13jtbat10fa85i&i=0.4&sp=500&p1=z13jtbat10fa85i&p2=z13jtbat10fa85i&asn=28118"]
+          },
+          {
+            "titulo": "T3:E7 - Here Comes a Candle to Light You to Bed",
+            "sinopsis": "Las lealtades se ponen a prueba mientras el equipo se prepara para la confrontación final.",
+            "iframes": ["https://j7fqjm25xt.premilkyway.com/hls2/01/03041/g9lew90jntjx_,n,h,x,.urlset/index-f3-v1-a1.m3u8?t=v00AYU2_oUFw1AdlE8PzDMaHBo8Kpr-sHYbiVabOz4c&s=1747931486&e=129600&f=15209755&srv=js4BwLKgfmTMJmVh&i=0.4&sp=500&p1=js4BwLKgfmTMJmVh&p2=js4BwLKgfmTMJmVh&asn=28118"]
+          },
+          {
+            "titulo": "T3:E8 - The Instant White-Hot Wild",
+            "sinopsis": "El enfrentamiento culminante entre los Boys y Homelander cambia el curso de sus vidas.",
+            "iframes": ["https://wnsa7jyhmnmt12.premilkyway.com/hls2/01/03041/xukw9tiokqrx_,n,h,x,.urlset/index-f2-v1-a1.m3u8?t=BWYVg7wIdOehBnAQk2aejCLHpyV6ljQ5UCjEzbfPp4I&s=1747931531&e=129600&f=15209767&srv=3FjgDmcnea8S35m&i=0.4&sp=500&p1=3FjgDmcnea8S35m&p2=3FjgDmcnea8S35m&asn=28118"]
+          }
+        ]
+      },
+      {
+        "numero": 4,
+        "episodios": [
+          {
+            "titulo": "T4:E1 - Department of Dirty Tricks",
+            "sinopsis": "Homelander enfrenta su juicio mientras los Boys planean su próxima jugada.",
+            "iframes": ["https://cdn-ldd3nik2yl3ojjan.orbitcache.com/engine/hls2/01/11559/8gezkycmvubr_,n,.urlset/index-v1-a1.m3u8?t=2dzAR8y2TQO0OyLGSh1wPaqsRK3PU5zo20As8YvGtTM&s=1747927802&e=14400&f=57799125&node=Qk+AsUej9TIMAmZHaiOElMLMYCvonNmxQQZBEr2RcQc=&i=148.103&sp=2500&asn=28118&q=n&rq=HGm7Ifv5ZXeIpo5Cbe9WvGyzKP5vZami4FMDGFSb"]
+          },
+          {
+            "titulo": "T4:E2 - Life Among the Septics",
+            "sinopsis": "El equipo se infiltra en una comunidad sospechosa mientras descubren nuevos secretos.",
+            "iframes": ["https://cdn-wtatahculkalrcev.orbitcache.com/engine/hls2/01/11559/caopnt9ig3gc_,n,.urlset/index-v1-a1.m3u8?t=e3l-5Yi3ajx5vhDJj080vlepUb1xwuAg_qJrWrlLLiE&s=1747927878&e=14400&f=57799143&node=eISAKDWRd0sgx/+XdP4Hazwt2f5jRKnKL0HD5mv5gRs=&i=148.103&sp=2500&asn=28118&q=n&rq=HGm7Ifv5ZXeIpo5Cbe9WvGyzKP5vZami4FMDGFSb"]
+          },
+          {
+            "titulo": "T4:E3 - We'll Keep the Red Flag Flying Here",
+            "sinopsis": "Annie descubre la razón del odio de Firecracker hacia ella. Hughie escapa de la muerte con ayuda inesperada.",
+            "iframes": ["https://fq97k6f9wh.cdn-centaurus.com/hls2/01/04202/1tivjbwhjk8q_n/index-v1-a1.m3u8?t=54cNpg429hdYtmIsRPCsjlY_Rv4W1M_tlHm-vDGgzac&s=1747927938&e=129600&f=21010127&srv=oyb6wom9jr&i=0.4&sp=500&p1=oyb6wom9jr&p2=oyb6wom9jr&asn=28118"]
+          },
+          {
+            "titulo": "T4:E4 - Wisdom of the Ages",
+            "sinopsis": "Homelander visita el lugar donde creció, reviviendo recuerdos oscuros.",
+            "iframes": ["https://cdn-ptejpfhct13vobjp.orbitcache.com/engine/hls2/01/11620/8lovaccwo0fz_,n,.urlset/index-v1-a1.m3u8?t=Iz5ejTlcdZZZ9W0ZQ-iE6S1bqlpyUiyJKjhBnEUYnf4&s=1747928002&e=14400&f=58102054&node=UE+o0WDa3qTWeqtOxlFvBP4frcF2IYaZWwRNVXKJjEY=&i=148.103&sp=2500&asn=28118&q=n&rq=HGm7Ifv5ZXeIpo5Cbe9WvGyzKP5vZami4FMDGFSb"]
+          },
+          {
+            "titulo": "T4:E5 - Beware the Jabberwock, My Son",
+            "sinopsis": "Mientras Hughie cuida a su padre moribundo, los Boys liberan a Stan para obtener un virus anti-Supe.",
+            "iframes": ["https://cdn-iaowrnazdxuc0gfr.orbitcache.com/engine/hls2/01/11657/8pxrmz7qfiup_,n,.urlset/index-v1-a1.m3u8?t=Qcpr6-pZeBlT3K8-61rvtl3wcGT9S1QDk7kX-QcXJlE&s=1747928065&e=14400&f=58286617&node=t+AsGec0tqyzimoTeyh//PLu+DKoSGpjzvcOJNJMnHA=&i=148.103&sp=2500&asn=28118&q=n&rq=HGm7Ifv5ZXeIpo5Cbe9WvGyzKP5vZami4FMDGFSb"]
+          },
+          {
+            "titulo": "T4:E6 - Dirty Business",
+            "sinopsis": "Los secretos de Vought salen a la luz mientras el equipo enfrenta nuevas amenazas.",
+            "iframes": ["https://18jij6rntf.premilkyway.com/hls2/01/04247/wzm0t14mrmzr_n/index-v1-a1.m3u8?t=dfPjBbQSBtE-ORgBKqNbrwoz6caMhgefmkxOcR5lozc&s=1747928098&e=129600&f=21239137&srv=KsLkgBWej56z&i=0.4&sp=500&p1=KsLkgBWej56z&p2=KsLkgBWej56z&asn=28118"]
+          },
+          {
+            "titulo": "T4:E7 - The Insider",
+            "sinopsis": "Una traición interna pone en peligro la misión de los Boys.",
+            "iframes": ["https://sedrfmwrpjxatem5.premilkyway.com/hls2/01/04362/fuymhqtfxk46_n/master.m3u8?t=p0nv13vxPhZ2ZU8t4LLyobFX7T5zS8tr7uls4HhdoyU&s=1747929220&e=129600&f=21811854&srv=KsLkgBWej56z&i=0.4&sp=500&p1=KsLkgBWej56z&p2=KsLkgBWej56z&asn=28118"]
+          },
+          {
+            "titulo": "T4:E8 - Season Four Finale",
+            "sinopsis": "El clímax de la temporada lleva a consecuencias irreversibles para todos los involucrados.",
+            "iframes": ["https://cdn-neuvwjq4hpqohwfe.orbitcache.com/engine/hls2/01/11657/jjshsfio7lvt_,n,.urlset/index-v1-a1.m3u8?t=SpWKf28oLC2Ifs77SZiPEFgUCg0m5leqgktZEBMAIlI&s=1747928152&e=14400&f=58286671&node=d53lEmEHQQNSXUGpvHAFDDt9O+aG63bsnBRZ0rNF4M0=&i=148.103&sp=2500&asn=28118&q=n&rq=HGm7Ifv5ZXeIpo5Cbe9WvGyzKP5vZami4FMDGFSb"]
+          }
+        ]
+      }
+    ]
+  }
+]

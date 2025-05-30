@@ -1,0 +1,19 @@
+"""
+WSGI config for web_peliculas_series_anime project.
+
+It exposes the WSGI callable as a module-level variable named ``application``.
+
+For more information on this file, see
+https://docs.djangoproject.com/en/5.2/howto/deployment/wsgi/
+"""
+
+import os
+
+from django.core.wsgi import get_wsgi_application
+
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'web_peliculas_series_anime.settings')
+
+application = get_wsgi_application()
+
+# Añade esta línea para que Vercel encuentre la aplicación
+app = application
