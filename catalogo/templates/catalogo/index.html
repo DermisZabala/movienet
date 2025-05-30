@@ -1,37 +1,36 @@
 {% extends "catalogo/base.html" %}
 {% load static %}
 
-{% block title %}Home{% endblock %}
+{% block title %}Inicio{% endblock %}
 
 {% block content %}
 <div class="container">
     <section class="welcome-section">
-        <h1>Welcome to MovieNET</h1>
-        <p>Your universe of Movies, Series, and Anime just a click away.</p>
+        <h1>Bienvenido a MovieNET</h1>
+        <p>Tu universo de Películas, Series y Anime al alcance de un clic.</p>
     </section>
 
     <section class="main-sections-grid">
         <a href="{% url 'catalogo:peliculas' %}" class="section-card">
             <div class="section-card__icon">🎬</div>
-            <h2>Movies</h2>
-            <p>Explore {{ peliculas_count|default:0 }} cinematic titles.</p>
+            <h2>Películas</h2>
+            <p>Explora {{ peliculas_count|default:0 }} títulos cinematográficos.</p>
         </a>
         
         <a href="{% url 'catalogo:series' %}" class="section-card">
             <div class="section-card__icon">📺</div>
             <h2>Series</h2>
-            <p>Discover {{ series_count|default:0 }} thrilling series.</p>
+            <p>Descubre {{ series_count|default:0 }} series apasionantes.</p>
         </a>
-
         <a href="{% url 'catalogo:anime' %}" class="section-card">
             <div class="section-card__icon">🍥</div>
             <h2>Anime</h2>
-            <p>Dive into {{ anime_count|default:0 }} Japanese animation worlds.</p>
+            <p>Sumérgete en {{ anime_count|default:0 }} mundos de animación japonesa.</p>
         </a>
     </section>
 
     <div class="ad-space ad-central">
-        <span>Central Advertisement</span>
+        <span>Anuncio Central</span>
     </div>
 </div>
 {% endblock %}

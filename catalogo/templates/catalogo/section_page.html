@@ -8,12 +8,12 @@
     <h1 class="section-title">{{ titulo_seccion }}</h1>
 
     {% if error_carga %}
-        <p class="message message--error">There was a problem loading the content. Please try again later or contact the administrator.</p>
+        <p class="message message--error">Hubo un problema al cargar el contenido. Por favor, inténtalo más tarde o contacta al administrador.</p>
     {% elif items or resultados %}
         <div class="card-grid" id="content-grid">
             {% with items_to_display=items|default:resultados %}
                 {% for item in items_to_display %}
-                    {% comment %} Determine the correct detail URL {% endcomment %}
+                    {% comment %} Determinar la URL de detalle correcta {% endcomment %}
                     {% if item.tipo == 'pelicula' or not item.tipo and tipo_contenido == 'peliculas' %}
                         {% url 'catalogo:movie_detail' item_id=item.id as final_detail_url %}
                         {% include "./partials/card.html" with item=item detail_url=final_detail_url %}
@@ -24,26 +24,32 @@
                         {% url 'catalogo:anime_detail' item_id=item.id as final_detail_url %}
                         {% include "./partials/card.html" with item=item detail_url=final_detail_url %}
                     {% else %}
-                        {% include "./partials/card.html" with item=item detail_url="#" %}
+                         {# Este else se alcanzaría si item.tipo no es pelicula/serie/anime Y
+                            tipo_contenido tampoco es peliculas/series/anime (o item.tipo existe y no es ninguno).
+                            Esto indicaría un problema con los datos o la lógica de la vista.
+                            Como fallback seguro, se usa un enlace de ancla.
+                         #}
+                         {% include "./partials/card.html" with item=item detail_url="#" %}
                     {% endif %}
                 {% endfor %}
             {% endwith %}
         </div>
+        {# Botón "Mostrar más" solo para vistas de sección, no para resultados de búsqueda #}
         {% if tipo_contenido != 'search' and items and items|length > 0 %}
-        <button id="show-more-btn" class="button button--primary button--load-more">Show more</button>
+        <button id="show-more-btn" class="button button--primary button--load-more">Mostrar más</button>
         {% endif %}
     {% else %}
         <p class="message">
             {% if query %}
-                No results found for "{{ query }}". Try different terms.
+                No se encontraron resultados para "{{ query }}". Intenta con otros términos.
             {% else %}
-                No content available in this section at the moment.
+                No hay contenido disponible en esta sección por el momento.
             {% endif %}
         </p>
     {% endif %}
 
     <aside class="ad-space ad-sidebar">
-        <span>Sidebar Advertisement</span>
+        <span>Anuncio Lateral</span>
     </aside>
 </div>
 {% endblock %}
