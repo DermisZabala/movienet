@@ -1,47 +1,41 @@
 {% extends "catalogo/base.html" %}
 {% load static %}
 
-{% block title %}{{ section_title }}{% endblock %} {# Assuming titulo_seccion becomes section_title passed in English #}
+{% block title %}{{ titulo_seccion }}{% endblock %}
 
 {% block content %}
 <div class="container section-page-container">
-    <h1 class="section-title">{{ section_title }}</h1> {# Assuming titulo_seccion becomes section_title #}
+    <h1 class="section-title">{{ titulo_seccion }}</h1>
 
-    {% if error_carga %} {# Assuming error_carga becomes error_loading or similar in view context #}
+    {% if error_carga %}
         <p class="message message--error">There was a problem loading the content. Please try again later or contact the administrator.</p>
-    {% elif items or resultados %} {# Assuming resultados becomes results #}
+    {% elif items or resultados %}
         <div class="card-grid" id="content-grid">
-            {% with items_to_display=items|default:resultados %} {# Assuming resultados becomes results #}
+            {% with items_to_display=items|default:resultados %}
                 {% for item in items_to_display %}
                     {% comment %} Determine the correct detail URL {% endcomment %}
-                    {% if item.type == 'movie' or not item.type and content_type == 'movies' %} {# Assuming item.tipo -> item.type and tipo_contenido -> content_type #}
+                    {% if item.tipo == 'pelicula' or not item.tipo and tipo_contenido == 'peliculas' %}
                         {% url 'catalogo:movie_detail' item_id=item.id as final_detail_url %}
                         {% include "./partials/card.html" with item=item detail_url=final_detail_url %}
-                    {% elif item.type == 'series' or not item.type and content_type == 'series' %} {# Assuming item.tipo -> item.type and tipo_contenido -> content_type #}
+                    {% elif item.tipo == 'serie' or not item.tipo and tipo_contenido == 'series' %}
                         {% url 'catalogo:serie_detail' item_id=item.id as final_detail_url %}
                         {% include "./partials/card.html" with item=item detail_url=final_detail_url %}
-                    {% elif item.type == 'anime' or not item.type and content_type == 'anime' %} {# Assuming item.tipo -> item.type and tipo_contenido -> content_type #}
+                    {% elif item.tipo == 'anime' or not item.tipo and tipo_contenido == 'anime' %}
                         {% url 'catalogo:anime_detail' item_id=item.id as final_detail_url %}
                         {% include "./partials/card.html" with item=item detail_url=final_detail_url %}
                     {% else %}
-                         {# This else would be reached if item.type is not movie/series/anime AND
-                            content_type is also not movies/series/anime (or item.type exists and is none of them).
-                            This would indicate a problem with the data or view logic.
-                            As a safe fallback, an anchor link is used.
-                         #}
-                         {% include "./partials/card.html" with item=item detail_url="#" %}
+                        {% include "./partials/card.html" with item=item detail_url="#" %}
                     {% endif %}
                 {% endfor %}
             {% endwith %}
         </div>
-        {# "Show more" button only for section views, not for search results #}
-        {% if content_type != 'search' and items and items|length > 0 %} {# Assuming tipo_contenido -> content_type #}
+        {% if tipo_contenido != 'search' and items and items|length > 0 %}
         <button id="show-more-btn" class="button button--primary button--load-more">Show more</button>
         {% endif %}
     {% else %}
         <p class="message">
             {% if query %}
-                No results found for "{{ query }}". Try other terms.
+                No results found for "{{ query }}". Try different terms.
             {% else %}
                 No content available in this section at the moment.
             {% endif %}

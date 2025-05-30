@@ -7,25 +7,26 @@
 <div class="container">
     <section class="welcome-section">
         <h1>Welcome to MovieNET</h1>
-        <p>Your universe of Movies, Series, and Anime at the click of a button.</p>
+        <p>Your universe of Movies, Series, and Anime just a click away.</p>
     </section>
 
     <section class="main-sections-grid">
         <a href="{% url 'catalogo:peliculas' %}" class="section-card">
             <div class="section-card__icon">🎬</div>
             <h2>Movies</h2>
-            <p>Explore {{ peliculas_count|default:0 }} film titles.</p> {# Assuming peliculas_count will be renamed movies_count in view context #}
+            <p>Explore {{ peliculas_count|default:0 }} cinematic titles.</p>
         </a>
         
         <a href="{% url 'catalogo:series' %}" class="section-card">
             <div class="section-card__icon">📺</div>
             <h2>Series</h2>
-            <p>Discover {{ series_count|default:0 }} captivating series.</p>
+            <p>Discover {{ series_count|default:0 }} thrilling series.</p>
         </a>
+
         <a href="{% url 'catalogo:anime' %}" class="section-card">
             <div class="section-card__icon">🍥</div>
             <h2>Anime</h2>
-            <p>Immerse yourself in {{ anime_count|default:0 }} worlds of Japanese animation.</p>
+            <p>Dive into {{ anime_count|default:0 }} Japanese animation worlds.</p>
         </a>
     </section>
 

@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block title %}MovieNET{% endblock %} - Movies, Series, and Anime</title>
+    <title>{% block title %}MovieNET{% endblock %} - Movies, Series and Anime</title>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{% static 'catalogo/css/style.css' %}">
     <link href="https://vjs.zencdn.net/7.17.0/video-js.css" rel="stylesheet" />
@@ -30,7 +30,7 @@
     </header>
 
     <div class="ad-space ad-banner-top">
-        <!-- Your ad code here -->
+        <!-- Aquí tu código de anuncio -->
         <span>Top Advertisement</span>
     </div>
 
@@ -40,7 +40,7 @@
     </main>
 
     <div class="ad-space ad-banner-bottom">
-        <!-- Your ad code here -->
+        <!-- Aquí tu código de anuncio -->
         <span>Bottom Advertisement</span>
     </div>
 
@@ -53,7 +53,7 @@
 
     <script src="https://vjs.zencdn.net/7.17.0/video.min.js"></script> {# VIDEO.JS FIRST #}
     <script src="https://vjs.zencdn.net/7.17.0/videojs-http-streaming.min.js"></script> {# VHS AFTER VIDEO.JS BASE #}
-    <script src="{% static 'catalogo/js/main.js' %}"></script>       {# YOUR CUSTOM SCRIPT AT THE END (or after its dependencies) #}
+    <script src="{% static 'catalogo/js/main.js' %}"></script>       {# YOUR CUSTOM SCRIPT LAST (or after dependencies) #}
     {% block extra_js %}{% endblock %}
 </body>
 </html>

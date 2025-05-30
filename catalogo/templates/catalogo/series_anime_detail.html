@@ -1,22 +1,22 @@
 {% extends "catalogo/base.html" %}
 {% load static %}
 
-{% block title %}{{ item.title }}{% endblock %} {# Assuming item.titulo becomes item.title #}
+{% block title %}{{ item.titulo }}{% endblock %}
 
 {% block content %}
 <div class="container detail-page series-anime-detail-page">
     <article class="content-detail">
         <header class="content-detail__header">
-            <img src="{{ item.poster }}" alt="{{ item.title }} Poster" class="content-detail__poster" loading="lazy"> {# Assuming item.titulo becomes item.title #}
+            <img src="{{ item.poster }}" alt="{{ item.titulo }} Poster" class="content-detail__poster" loading="lazy">
             <div class="content-detail__info">
-                <h1>{{ item.title }} ({{ item.year }})</h1> {# Assuming item.titulo, item.anio become item.title, item.year #}
-                <p><strong>Genre:</strong> {{ item.genre|join:", " }}</p> {# Assuming item.genero becomes item.genre #}
-                <p><strong>Rating:</strong> {{ item.rating }}/10</p> {# Assuming item.calificacion becomes item.rating #}
-                {% if item.cast %} {# Assuming item.elenco becomes item.cast #}
-                <p><strong>Cast:</strong> {{ item.cast|join:", " }}</p>
+                <h1>{{ item.titulo }} ({{ item.anio }})</h1>
+                <p><strong>Genre:</strong> {{ item.genero|join:", " }}</p>
+                <p><strong>Rating:</strong> {{ item.calificacion }}/10</p>
+                {% if item.elenco %}
+                <p><strong>Cast:</strong> {{ item.elenco|join:", " }}</p>
                 {% endif %}
                 <h3>General Synopsis</h3>
-                <p class="content-detail__synopsis">{{ item.synopsis }}</p> {# Assuming item.sinopsis becomes item.synopsis #}
+                <p class="content-detail__synopsis">{{ item.sinopsis }}</p>
             </div>
         </header>
 
@@ -25,48 +25,48 @@
             <div class="video-player-wrapper">
                 <div class="video-player-container">
                     <iframe
-                        id="series-anime-main-iframe-player" {# New ID for the iframe #}
+                        id="series-anime-main-iframe-player"
                         frameborder="0"
                         allowfullscreen
                         scrolling="no"
                         allow="autoplay; encrypted-media"
-                        src="" {# Will be loaded dynamically by JS #}
-                        ></iframe>
+                        src="">
+                    </iframe>
                 </div>
             </div>
             <div id="current-episode-controls" class="player-options-controls episode-controls">
                 <h4>Available Servers (Episode):</h4>
                 <div class="server-selection-controls" id="episode-server-buttons">
-                    {# "Server N" buttons for the episode will be inserted here by JS #}
+                    {# Server buttons will be inserted here by JS #}
                 </div>
                 <div class="report-controls" id="episode-report-button-container">
-                    {# The "Report Video" button for the episode will be inserted here by JS #}
+                    {# Report button will be inserted here by JS #}
                 </div>
             </div>
         </section>
 
         <section class="seasons-episodes-section">
             <h2>Seasons and Episodes</h2>
-            {% if item.seasons %} {# Assuming item.temporadas becomes item.seasons #}
-                {% for season in item.seasons %} {# Assuming temporada becomes season #}
+            {% if item.temporadas %}
+                {% for temporada in item.temporadas %}
                 <div class="season-block">
                     <h3 class="season-title">
-                        Season {{ season.number }} {# Assuming temporada.numero becomes season.number #}
+                        Season {{ temporada.numero }}
                         <span class="season-toggle-icon">▼</span>
                     </h3>
                     <div class="season-episodes-content">
                         <ul class="episode-list">
-                            {% for episode in season.episodes %} {# Assuming episodio becomes episode #}
+                            {% for episodio in temporada.episodios %}
                             <li class="episode-item"
-                                data-episode-title="{{ episode.title }}" {# Assuming episodio.titulo becomes episode.title #}
-                                data-episode-iframes="{{ episode.iframes|join:'|||' }}"
+                                data-episode-title="{{ episodio.titulo }}"
+                                data-episode-iframes="{{ episodio.iframes|join:'|||' }}"
                                 data-content-id="{{ item.id }}"
-                                data-content-title="{{ item.title }}" {# General series/anime title, assuming item.titulo becomes item.title #}
-                                data-item-type="{{ content_type }}"> {# Assuming tipo_contenido becomes content_type, passed as 'series' or 'anime' #}
+                                data-content-title="{{ item.titulo }}"
+                                data-item-type="{{ tipo_contenido }}">
                                 <div class="episode-item__info">
-                                    <span class="episode-item__title">{{ episode.title }}</span> {# Assuming episodio.titulo becomes episode.title #}
-                                    {% if episode.synopsis %} {# Assuming episodio.sinopsis becomes episode.synopsis #}
-                                        <p class="episode-item__synopsis">{{ episode.synopsis }}</p>
+                                    <span class="episode-item__title">{{ episodio.titulo }}</span>
+                                    {% if episodio.sinopsis %}
+                                        <p class="episode-item__synopsis">{{ episodio.sinopsis }}</p>
                                     {% endif %}
                                 </div>
                                 <button class="button button--primary play-episode-master-btn">
@@ -79,13 +79,13 @@
                 </div>
                 {% endfor %}
             {% else %}
-                <p class="message message--info">No season or episode information available for {{ item.title }}.</p> {# Assuming item.titulo becomes item.title #}
+                <p class="message message--info">No season or episode information available for {{ item.titulo }}.</p>
             {% endif %}
         </section>
     </article>
 
     <div class="ad-space ad-detail-page">
-        <span>Advertisement on Detail Page</span>
+        <span>Detail Page Advertisement</span>
     </div>
 </div>
 {% endblock %}
