@@ -1,65 +1,65 @@
 {% extends "catalogo/base.html" %}
 {% load static %}
 
-{% block title %}{{ item.titulo }}{% endblock %}
+{% block title %}{{ item.title }}{% endblock %} {# Assuming item.titulo becomes item.title #}
 
 {% block content %}
 <div class="container detail-page movie-detail-page">
     <article class="content-detail">
         <header class="content-detail__header">
-            <img src="{{ item.poster }}" alt="{{ item.titulo }} Poster" class="content-detail__poster" loading="lazy">
+            <img src="{{ item.poster }}" alt="{{ item.title }} Poster" class="content-detail__poster" loading="lazy"> {# Assuming item.titulo becomes item.title #}
             <div class="content-detail__info">
-                <h1>{{ item.titulo }} ({{ item.anio }})</h1>
-                <p><strong>Género:</strong> {{ item.genero|join:", " }}</p>
-                <p><strong>Calificación:</strong> {{ item.calificacion }}/10</p>
-                <p><strong>Elenco:</strong> {{ item.elenco|join:", " }}</p>
-                <h3>Sinopsis</h3>
-                <p class="content-detail__synopsis">{{ item.sinopsis }}</p>
+                <h1>{{ item.title }} ({{ item.year }})</h1> {# Assuming item.titulo, item.anio become item.title, item.year #}
+                <p><strong>Genre:</strong> {{ item.genre|join:", " }}</p> {# Assuming item.genero becomes item.genre #}
+                <p><strong>Rating:</strong> {{ item.rating }}/10</p> {# Assuming item.calificacion becomes item.rating #}
+                <p><strong>Cast:</strong> {{ item.cast|join:", " }}</p> {# Assuming item.elenco becomes item.cast #}
+                <h3>Synopsis</h3>
+                <p class="content-detail__synopsis">{{ item.synopsis }}</p> {# Assuming item.sinopsis becomes item.synopsis #}
             </div>
         </header>
 
        <section class="content-detail__player-section">
-            <h2>Ver Película</h2>
+            <h2>Watch Movie</h2>
             {% if item.iframes and item.iframes.0 %}
                 <div class="video-player-wrapper">
                     <div class="video-player-container">
                         <iframe
-                            id="main-iframe-player"  {# Nuevo ID para el iframe #}
-                            src="{{ item.iframes.0 }}" {# Carga el primer iframe por defecto #}
+                            id="main-iframe-player"  {# New ID for the iframe #}
+                            src="{{ item.iframes.0 }}" {# Loads the first iframe by default #}
                             frameborder="0"
                             allowfullscreen
-                            scrolling="no" {# Opcional, si no quieres barras de scroll del iframe #}
-                            allow="autoplay; encrypted-media" {# Opcional, depende de los servidores #}
+                            scrolling="no" {# Optional, if you don't want iframe scrollbars #}
+                            allow="autoplay; encrypted-media" {# Optional, depends on servers #}
                         ></iframe>
                     </div>
                 </div>
 
-                {# Estructura para que JS inserte los botones #}
+                {# Structure for JS to insert buttons #}
                 <div class="player-options-controls" id="movie-player-options">
-                    <h4>Servidores Disponibles:</h4>
+                    <h4>Available Servers:</h4>
                     <div class="server-selection-controls" id="movie-server-buttons">
-                        {# Los botones de "Servidor N" para la película se insertarán aquí por JS #}
+                        {# "Server N" buttons for the movie will be inserted here by JS #}
                     </div>
                     <div class="report-controls" id="movie-report-button-container">
-                        {# El botón "Reportar Video" para la película se insertará aquí por JS #}
+                        {# The "Report Video" button for the movie will be inserted here by JS #}
                     </div>
                 </div>
-                {# Elemento oculto para pasar datos al JS #}
+                {# Hidden element to pass data to JS #}
                 <div id="movie-iframe-data"
                      data-iframes="{{ item.iframes|join:'|||' }}"
                      data-id="{{ item.id }}"
-                     data-title="{{ item.titulo }}"
-                     data-item-type="pelicula"
+                     data-title="{{ item.title }}" {# Assuming item.titulo becomes item.title #}
+                     data-item-type="movie" {# Changed "pelicula" to "movie" #}
                      style="display:none;">
                 </div>
 
             {% else %}
-                <p class="message message--warning">No hay enlaces de reproducción disponibles para esta película en este momento.</p>
+                <p class="message message--warning">No playback links are available for this movie at this time.</p>
             {% endif %}
         </section>
     </article>
     <div class="ad-space ad-detail-page">
-        <span>Anuncio en Página de Detalle</span>
+        <span>Advertisement on Detail Page</span>
     </div>
 </div>
 {% endblock %}
