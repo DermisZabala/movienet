@@ -146,7 +146,7 @@ a:hover {
 /* Tarjetas de Contenido (Genéricas) */
 .section-title { margin-bottom: 30px; text-align: center; font-size: 2.5em; color: #61dafb; }
 .card-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 25px; margin-bottom: 30px; }
-.card { background-color: #102a43; border-radius: 8px; overflow: hidden; box-shadow: 0 6px 12px rgba(0,0,0,0.3); transition: transform 0.3s ease, box-shadow 0.3s ease; display: none; }
+.card { background-color: #102a43; border-radius: 8px; overflow: hidden; box-shadow: 0 6px 12px rgba(0,0,0,0.3); transition: transform 0.3s ease, box-shadow 0.3s ease; display: block; }
 .card.visible { display: block; }
 .card:hover { transform: translateY(-5px) scale(1.03); box-shadow: 0 10px 20px rgba(0, 123, 255, 0.25); }
 .card__link { text-decoration: none; color: inherit; display: block; }
@@ -154,6 +154,8 @@ a:hover {
 .card__content { padding: 15px; }
 .card__title { font-size: 1.1em; margin-bottom: 5px; color: #add8e6; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .card__year, .card__rating { font-size: 0.9em; color: #b0c4de; margin-bottom: 3px; }
+
+
 
 /* Botones Generales */
 .button { display: inline-block; padding: 10px 20px; border-radius: 20px; border: none; cursor: pointer; font-weight: 600; text-decoration: none; text-align: center; transition: background-color 0.3s ease, transform 0.2s ease; font-family: 'Poppins', sans-serif; }
@@ -406,4 +408,13 @@ a:hover {
     .report-controls .button { width: 100%; max-width: 200px; }
     .season-title { font-size: 1.1em; padding: 10px 12px;}
 
+}
+
+/* Reglas para el control de visibilidad de las cards por JavaScript */
+.card-grid .card {
+    display: none; /* Por defecto, las tarjetas están ocultas */
+}
+
+.card-grid .card.visible {
+    display: block; /* Cuando JavaScript añade la clase 'visible', la tarjeta se muestra */
 }

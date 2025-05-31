@@ -215,3 +215,11 @@ SECURE_HSTS_PRELOAD = os.environ.get('DJANGO_SECURE_HSTS_PRELOAD', 'False').lowe
 
 # Si Vercel (o cualquier proxy) maneja HTTPS y reenvía como HTTP
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+
+
+# --- Configuración para la API de TMDb ---
+# Se recomienda obtener esta clave de una variable de entorno para seguridad en producción
+TMDB_API_KEY = os.environ.get('TMDB_API_KEY', '6427de0dc39f16b5707362359d15337f') # Tu clave API de TMDb
+TMDB_BASE_URL = 'https://api.themoviedb.org/3'
+TMDB_IMAGE_BASE_URL = 'https://image.tmdb.org/t/p/'
+TMDB_POSTER_SIZE = 'w500' # Tamaño de los posters: w92, w154, w185, w342, w500, w780, original

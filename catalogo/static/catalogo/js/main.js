@@ -9,23 +9,52 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // --- Funcionalidad "Mostrar más" ---
+    // --- Funcionalidad "Mostrar más" y control de visibilidad de cards ---
     const contentGrid = document.getElementById('content-grid');
     const showMoreBtn = document.getElementById('show-more-btn');
-    let itemsToShow = 20;
-    const increment = 15;
+    let itemsToShow = 20; // Puedes mantener tu valor deseado aquí (20)
+    const increment = 15; // Puedes mantener tu valor deseado aquí (15)
 
-    if (contentGrid && showMoreBtn) {
+    if (contentGrid) { // Solo procede si contentGrid existe
+        const tipoContenido = contentGrid.dataset.tipoContenido; // Obtiene el tipo de contenido
+
         const allCards = Array.from(contentGrid.getElementsByClassName('card'));
-        function displayCards() {
-            allCards.forEach((card, index) => {
-                if (index < itemsToShow) card.classList.add('visible');
+
+        // Si es una página de búsqueda O no hay botón 'Mostrar más' (lo que implica que todos deben mostrarse)
+        if (tipoContenido === 'search' || !showMoreBtn) {
+            allCards.forEach(card => card.classList.add('visible')); // Muestra todas las tarjetas inmediatamente
+            if (showMoreBtn) { // Si el botón existe (aunque no se muestre)
+                showMoreBtn.classList.add('hidden'); // Asegúrate de que el botón esté oculto
+            }
+        } else { // Para páginas de sección regulares con paginación
+            function displayCards() {
+                allCards.forEach((card, index) => {
+                    if (index < itemsToShow) {
+                        card.classList.add('visible'); // Muestra las tarjetas dentro del límite
+                    } else {
+                        card.classList.remove('visible'); // Oculta las tarjetas que exceden el límite
+                    }
+                });
+                // Controla la visibilidad del botón "Show More"
+                if (itemsToShow >= allCards.length) {
+                    showMoreBtn.classList.add('hidden');
+                } else {
+                    showMoreBtn.classList.remove('hidden');
+                }
+            }
+
+            showMoreBtn.addEventListener('click', () => {
+                itemsToShow += increment;
+                displayCards();
             });
-            if (itemsToShow >= allCards.length) showMoreBtn.classList.add('hidden');
-            else showMoreBtn.classList.remove('hidden');
+
+            // Llama a displayCards() solo si hay tarjetas para mostrar inicialmente
+            if (allCards.length > 0) {
+                displayCards();
+            } else if (allCards.length === 0 && showMoreBtn) {
+                showMoreBtn.classList.add('hidden'); // Oculta el botón si no hay tarjetas
+            }
         }
-        showMoreBtn.addEventListener('click', () => { itemsToShow += increment; displayCards(); });
-        if (allCards.length > 0) displayCards(); else if(allCards.length === 0 && showMoreBtn) showMoreBtn.classList.add('hidden');
     }
     
     // --- CSRF Token Getter ---
@@ -186,12 +215,12 @@ document.addEventListener('DOMContentLoaded', function() {
                 });
             } else {
                 const h4 = moviePlayerOptionsContainer.querySelector('h4');
-                 if (h4) h4.style.display = 'none';
-                 movieServerButtonsContainer.innerHTML = '';
-                 movieReportButtonContainer.innerHTML = '';
+                   if (h4) h4.style.display = 'none';
+                   movieServerButtonsContainer.innerHTML = '';
+                   movieReportButtonContainer.innerHTML = '';
             }
         } else {
-             console.warn("Movie player (iframe): Missing containers for server or report buttons."); // English console
+               console.warn("Movie player (iframe): Missing containers for server or report buttons."); // English console
         }
     }
 
