@@ -12,8 +12,8 @@ document.addEventListener('DOMContentLoaded', function() {
     // --- Funcionalidad "Mostrar más" ---
     const contentGrid = document.getElementById('content-grid');
     const showMoreBtn = document.getElementById('show-more-btn');
-    let itemsToShow = 10;
-    const increment = 5;
+    let itemsToShow = 20;
+    const increment = 15;
 
     if (contentGrid && showMoreBtn) {
         const allCards = Array.from(contentGrid.getElementsByClassName('card'));
