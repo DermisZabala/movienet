@@ -199,9 +199,9 @@ DEFAULT_FROM_EMAIL = os.environ.get('DJANGO_DEFAULT_FROM_EMAIL', 'webmaster@loca
 # URLs de los JSON (Mantenidas como variables de entorno o directamente si son fijas)
 # Es mejor poner estas en variables de entorno si pueden cambiar o son sensibles.
 # Si son públicas y fijas, está bien tenerlas aquí.
-JSON_PELICULAS_URL = 'https://raw.githubusercontent.com/DermisZabala/jsonMovieNet/refs/heads/main/peliculas.json'
-JSON_SERIES_URL = 'https://raw.githubusercontent.com/DermisZabala/jsonMovieNet/refs/heads/main/series.json'
-JSON_ANIME_URL = 'https://raw.githubusercontent.com/DermisZabala/jsonMovieNet/refs/heads/main/anime.json'
+JSON_PELICULAS_URL = 'https://raw.githubusercontent.com/DermisZabala/jsonMovieNet/refs/heads/master/peliculas.json'
+JSON_SERIES_URL = 'https://raw.githubusercontent.com/DermisZabala/jsonMovieNet/refs/heads/master/series.json'
+JSON_ANIME_URL = 'https://raw.githubusercontent.com/DermisZabala/jsonMovieNet/refs/heads/master/anime.json'
 
 # --- Configuraciones de Seguridad para Producción ---
 CSRF_COOKIE_SECURE = os.environ.get('DJANGO_CSRF_COOKIE_SECURE', 'False').lower() == 'true'
