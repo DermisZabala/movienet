@@ -197,7 +197,7 @@ a:hover {
 /* --- ESTILOS PARA EL REPRODUCTOR (IFRAME) --- */
 .video-player-wrapper { 
     max-width: 900px; 
-    margin: 0 auto 25px auto; 
+    margin: 0 auto 0 auto; 
     border-radius: 8px; 
     overflow: hidden; 
     box-shadow: 0 5px 15px rgba(0,0,0,0.4); 
@@ -283,7 +283,7 @@ a:hover {
 
 
 /* Controles de opciones y reporte */
-.player-options-controls { text-align: center; margin-top: 20px; display: flex; flex-direction: column; /* Alinea H4 y los contenedores de botones verticalmente */ align-items: center; gap: 15px; }
+.player-options-controls { text-align: center; margin-top: 10px; display: flex; flex-direction: column; /* Alinea H4 y los contenedores de botones verticalmente */ align-items: center; gap: 15px; }
 .player-options-controls h4 { color: #add8e6; margin-bottom: 10px; font-size: 1.3em; width: 100%; text-align: center; padding-bottom: 10px; border-bottom: 1px solid #004080; }
 .server-selection-controls { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin-bottom: 10px; }
 .server-selection-controls .button { flex-grow: 1; min-width: 120px; max-width: 180px; }
@@ -364,8 +364,77 @@ a:hover {
 /* Footer */
 .site-footer { background-color: #00182f; color: #a0b0c0; text-align: center; padding: 30px 0; border-top: 1px solid #004080; margin-top: auto; }
 
+
+.episode-navigation-controls {
+    display: flex;
+    justify-content: center; /* Por defecto, o space-between si prefieres en desktop */
+    align-items: center;
+    flex-wrap: nowrap; 
+    gap: 15px; 
+    margin-top: 10px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #004080;
+}
+
+.episode-navigation-controls .button.nav-button-episode {
+    display: flex; 
+    align-items: center;
+    justify-content: center; 
+    gap: 8px;
+    background-color: #2a3b4d; 
+    color: #c0d0e0; 
+    border: 1px solid #405060; 
+    border-radius: 25px; 
+    padding: 10px 20px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.9em;
+    font-weight: 500;
+    text-transform: uppercase;
+    flex-grow: 0;
+    flex-shrink: 0;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    line-height: 1.2; 
+}
+.episode-navigation-controls .button.nav-button-episode:hover {
+    background-color: #384d63; 
+    transform: translateY(-1px);
+    color: #ffffff;
+}
+.episode-navigation-controls .button.nav-button-list {
+    background-color: #dc3545; 
+    border-radius: 50%; 
+    padding: 12px; 
+    width: 50px;  
+    height: 50px; 
+    border: 2px solid #721c24; 
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+.episode-navigation-controls .button.nav-button-list:hover {
+    background-color: #721c24; 
+    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+}
+.nav-button-icon {
+    height: 18px; 
+    width: auto;
+    display: inline-block; 
+}
+.episode-navigation-controls .button.nav-button-list .nav-button-icon {
+    height: 24px; 
+    filter: invert(1) brightness(0.1); 
+}
+.nav-button-text {
+    display: block; 
+    font-size: 0.75em; 
+    line-height: 1;
+    margin-top: 2px; 
+    color: #a0b0c0; 
+}
+.episode-navigation-controls .button.nav-button-next {
+    flex-direction: row-reverse; 
+}
+
 /* Responsividad */
-@media (max-width: 880px) {
+@media (max-width: 760px) {
     .nav-toggle { display: block; order: 1; }
     .search-bar { order: 2; width: 100%; margin-left:0; margin-top: 10px; }
     .nav-links { display: none; flex-direction: column; width: 100%; position: absolute; top: 100%; left: 0; background-color: rgba(0, 24, 47, 0.95); padding: 10px 0; order: 3; }
@@ -389,6 +458,53 @@ a:hover {
     .episode-item .button { width: 100%; max-width: 250px; align-self: center; margin-left: 0; }
 
     .season-title { font-size: 1.3em; padding: 12px 15px;}
+
+    .episode-navigation-controls {
+        display: flex;
+        justify-content: space-between; /* Para separar el grupo izquierdo del derecho */
+        align-items: center; /* Centrar verticalmente los grupos */
+        flex-wrap: nowrap; /* Evitar que se envuelvan por defecto en este nivel */
+    }
+
+    /* Agrupar los botones Anterior y Siguiente */
+    .episode-navigation-controls .nav-button-prev,
+    .episode-navigation-controls .nav-button-next {
+        /* Si están presentes, se apilarán gracias al contenedor que crearemos o a su propio display */
+    }
+
+    /* El botón de lista se queda a la izquierda */
+    .episode-navigation-controls .nav-button-list {
+        /* Mantener su tamaño circular y demás estilos */
+        width: 50px;
+        height: 50px;
+        padding: 12px;
+    }
+    .episode-navigation-controls .button.nav-button-list .nav-button-icon {
+        height: 24px;
+    }
+    
+    /* Contenedor para los botones de Anterior/Siguiente a la derecha */
+    /* Esto requerirá un pequeño cambio en el HTML o un pseudo-elemento si no quieres cambiar HTML */
+    /* Opción A: Si puedes añadir un div en el HTML para agruparlos (ver abajo) */
+    /* Opción B: Si no quieres cambiar HTML, intentamos con flex y order (más limitado) */
+
+    /* Asumiendo Opción A (div wrapper para prev/next - más robusto): */
+    /* Ver HTML modificado abajo */
+    .episode-nav-group-right {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end; /* Alinea los botones al final (derecha) del grupo */
+        gap: 10px; /* Espacio entre Anterior y Siguiente */
+    }
+    .episode-nav-group-right .nav-button-episode {
+        width: auto; /* Que se ajusten a su contenido */
+        min-width: 180px; /* O un ancho que te guste */
+        justify-content: flex-start; /* Alinea contenido del botón a la izquierda */
+    }
+    .episode-nav-group-right .nav-button-prev .nav-button-text,
+    .episode-nav-group-right .nav-button-next .nav-button-text {
+        font-size: 0.8em; /* Ajustar tamaño de texto si es necesario */
+    }
 }
 
 @media (max-width: 480px) {
@@ -408,6 +524,36 @@ a:hover {
     .report-controls .button { width: 100%; max-width: 200px; }
     .season-title { font-size: 1.1em; padding: 10px 12px;}
 
+    
+
+    .episode-navigation-controls .button.nav-button-episode {
+        padding: 8px 5px;
+        font-size: 0.8em;
+    }
+    .nav-button-icon {
+        height: 16px;
+    }
+    /* Ajustes para el botón de lista en pantallas muy pequeñas */
+    .episode-navigation-controls .button.nav-button-list {
+        width: 35px;
+        height: 35px;
+        padding: 10px;
+        /* No necesita margin-right: auto; si el contenedor de la derecha ya se encarga */
+    }
+    .episode-navigation-controls .button.nav-button-list .nav-button-icon {
+        height: 20px;
+    }
+    
+    /* Ajustes para el grupo de la derecha en pantallas muy pequeñas */
+    .episode-nav-group-right .nav-button-episode {
+        min-width: 140px;
+        padding: 8px 12px;
+    }
+    .episode-nav-group-right .nav-button-prev .nav-button-text,
+    .episode-nav-group-right .nav-button-next .nav-button-text {
+        font-size: 0.7em; 
+    }
+
 }
 
 /* Reglas para el control de visibilidad de las cards por JavaScript */
@@ -418,3 +564,4 @@ a:hover {
 .card-grid .card.visible {
     display: block; /* Cuando JavaScript añade la clase 'visible', la tarjeta se muestra */
 }
+

@@ -12,47 +12,43 @@ document.addEventListener('DOMContentLoaded', function() {
     // --- Funcionalidad "Mostrar más" y control de visibilidad de cards ---
     const contentGrid = document.getElementById('content-grid');
     const showMoreBtn = document.getElementById('show-more-btn');
-    let itemsToShow = 20; // Puedes mantener tu valor deseado aquí (20)
-    const increment = 15; // Puedes mantener tu valor deseado aquí (15)
+    let itemsToShow = 20; 
+    const increment = 15; 
 
-    if (contentGrid) { // Solo procede si contentGrid existe
-        const tipoContenido = contentGrid.dataset.tipoContenido; // Obtiene el tipo de contenido
-
+    if (contentGrid) { 
+        const tipoContenido = contentGrid.dataset.tipoContenido; 
         const allCards = Array.from(contentGrid.getElementsByClassName('card'));
 
-        // Si es una página de búsqueda O no hay botón 'Mostrar más' (lo que implica que todos deben mostrarse)
         if (tipoContenido === 'search' || !showMoreBtn) {
-            allCards.forEach(card => card.classList.add('visible')); // Muestra todas las tarjetas inmediatamente
-            if (showMoreBtn) { // Si el botón existe (aunque no se muestre)
-                showMoreBtn.classList.add('hidden'); // Asegúrate de que el botón esté oculto
+            allCards.forEach(card => card.classList.add('visible')); 
+            if (showMoreBtn) { 
+                showMoreBtn.classList.add('hidden'); 
             }
-        } else { // Para páginas de sección regulares con paginación
+        } else { 
             function displayCards() {
                 allCards.forEach((card, index) => {
                     if (index < itemsToShow) {
-                        card.classList.add('visible'); // Muestra las tarjetas dentro del límite
+                        card.classList.add('visible'); 
                     } else {
-                        card.classList.remove('visible'); // Oculta las tarjetas que exceden el límite
+                        card.classList.remove('visible'); 
                     }
                 });
-                // Controla la visibilidad del botón "Show More"
                 if (itemsToShow >= allCards.length) {
                     showMoreBtn.classList.add('hidden');
                 } else {
                     showMoreBtn.classList.remove('hidden');
                 }
             }
-
-            showMoreBtn.addEventListener('click', () => {
-                itemsToShow += increment;
-                displayCards();
-            });
-
-            // Llama a displayCards() solo si hay tarjetas para mostrar inicialmente
+            if (showMoreBtn) { // Añadir event listener solo si el botón existe
+                showMoreBtn.addEventListener('click', () => {
+                    itemsToShow += increment;
+                    displayCards();
+                });
+            }
             if (allCards.length > 0) {
                 displayCards();
             } else if (allCards.length === 0 && showMoreBtn) {
-                showMoreBtn.classList.add('hidden'); // Oculta el botón si no hay tarjetas
+                showMoreBtn.classList.add('hidden'); 
             }
         }
     }
@@ -76,12 +72,11 @@ document.addEventListener('DOMContentLoaded', function() {
     // --- Reportar Enlace Caído (Handler Genérico) ---
     function handleReportLink(event) {
         const button = event.currentTarget;
-        // reportedLink aquí será la URL de embed (ej. https://vidsrc.icu/embed/...)
         const { contentId, contentTitle, reportedLink, itemType, episodeTitle = '', serverLabel = '' } = button.dataset;
 
         if (!contentId || !contentTitle || !reportedLink || !itemType) {
-            console.error('Incomplete data for report:', button.dataset); // English console
-            alert('Missing data to send the report.'); // English alert
+            console.error('Incomplete data for report:', button.dataset);
+            alert('Missing data to send the report.');
             return;
         }
         const payload = {
@@ -92,11 +87,11 @@ document.addEventListener('DOMContentLoaded', function() {
             episode_title: episodeTitle,
             server_label: serverLabel
         };
-        const reportUrl = '/reportar-enlace/'; 
+        const reportUrl = '/reportar-enlace/'; // Asegúrate que esta URL está definida en tus urls.py globales
         
         const originalButtonText = button.textContent;
         button.disabled = true;
-        button.textContent = 'Reporting...'; // English text
+        button.textContent = 'Reporting...';
 
         fetch(reportUrl, {
             method: 'POST',
@@ -109,17 +104,17 @@ document.addEventListener('DOMContentLoaded', function() {
         .then(response => response.json())
         .then(data => {
             if (data.status === 'success') {
-                alert('Thank you! Your report has been submitted.'); // English alert
-                button.textContent = 'Reported';  // English text
+                alert('Thank you! Your report has been submitted.');
+                button.textContent = 'Reported'; 
             } else {
-                alert('Error sending report: ' + (data.message || 'Try again.')); // English alert
+                alert('Error sending report: ' + (data.message || 'Try again.'));
                 button.textContent = originalButtonText;
                 button.disabled = false;
             }
         })
         .catch(error => {
-            console.error('Error in report request:', error); // English console
-            alert('There was a connection error while reporting the link.'); // English alert
+            console.error('Error in report request:', error);
+            alert('There was a connection error while reporting the link.');
             button.textContent = originalButtonText;
             button.disabled = false;
         });
@@ -127,6 +122,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // --- Función para crear y actualizar el botón de reporte único ---
     function createOrUpdateReportButton(container, data) {
+        if (!container) return; // Si el contenedor no existe, no hacer nada
         let reportBtn = container.querySelector('.report-video-btn');
         if (!reportBtn) {
             reportBtn = document.createElement('button');
@@ -134,11 +130,11 @@ document.addEventListener('DOMContentLoaded', function() {
             container.appendChild(reportBtn);
             reportBtn.addEventListener('click', handleReportLink);
         }
-        reportBtn.textContent = 'Report Video'; // English text
+        reportBtn.textContent = 'Report Video';
         reportBtn.dataset.contentId = data.contentId;
         reportBtn.dataset.contentTitle = data.contentTitle;
         reportBtn.dataset.itemType = data.itemType;
-        reportBtn.dataset.reportedLink = data.activeIframeSrc; // activeIframeSrc será la URL de EMBED
+        reportBtn.dataset.reportedLink = data.activeIframeSrc; 
         reportBtn.dataset.serverLabel = data.activeServerLabel;
         if (data.episodeTitle) {
             reportBtn.dataset.episodeTitle = data.episodeTitle;
@@ -147,11 +143,11 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
 
-    // --- Reproductor de Películas (iframe) ---
+    // --- REPRODUCTOR DE PELÍCULAS (IFRAME) ---
     const movieIframePlayerElement = document.getElementById('main-iframe-player');
     const moviePlayerOptionsContainer = document.getElementById('movie-player-options');
     const movieIframeDataElement = document.getElementById('movie-iframe-data');
-    let currentMovieActiveEmbedUrl = ""; // Almacenar la URL de EMBED activa para la película
+    let currentMovieActiveEmbedUrl = ""; 
 
     if (movieIframePlayerElement && moviePlayerOptionsContainer && movieIframeDataElement) {
         const movieServerButtonsContainer = moviePlayerOptionsContainer.querySelector('#movie-server-buttons');
@@ -161,14 +157,14 @@ document.addEventListener('DOMContentLoaded', function() {
             const iframeSourcesString = movieIframeDataElement.dataset.iframes;
             const movieId = movieIframeDataElement.dataset.id;
             const movieTitle = movieIframeDataElement.dataset.title;
-            const itemType = movieIframeDataElement.dataset.itemType; // This will be "pelicula"
-            const originalIframes = iframeSourcesString ? iframeSourcesString.split('|||').filter(link => link.trim() !== '') : []; // Estas son las URLs de EMBED
+            const itemType = movieIframeDataElement.dataset.itemType; 
+            const originalIframes = iframeSourcesString ? iframeSourcesString.split('|||').filter(link => link.trim() !== '') : [];
 
             movieServerButtonsContainer.innerHTML = '';
             movieReportButtonContainer.innerHTML = '';
 
             if (originalIframes.length > 0) {
-                currentMovieActiveEmbedUrl = originalIframes[0]; // Asignar la primera URL de embed como activa
+                currentMovieActiveEmbedUrl = originalIframes[0]; 
 
                 if (movieIframePlayerElement.src !== currentMovieActiveEmbedUrl) {
                     movieIframePlayerElement.src = currentMovieActiveEmbedUrl; 
@@ -179,11 +175,11 @@ document.addEventListener('DOMContentLoaded', function() {
                     contentTitle: movieTitle,
                     itemType: itemType,
                     activeIframeSrc: currentMovieActiveEmbedUrl, 
-                    activeServerLabel: "Server 1" // English text
+                    activeServerLabel: "Server 1" 
                 });
 
                 originalIframes.forEach((iframeEmbedSrc, index) => {
-                    const serverLabel = `Server ${index + 1}`; // English text
+                    const serverLabel = `Server ${index + 1}`; 
                     const serverButton = document.createElement('button');
                     serverButton.classList.add('button', 'button--secondary', 'change-movie-server-btn');
                     serverButton.textContent = serverLabel;
@@ -220,125 +216,118 @@ document.addEventListener('DOMContentLoaded', function() {
                    movieReportButtonContainer.innerHTML = '';
             }
         } else {
-               console.warn("Movie player (iframe): Missing containers for server or report buttons."); // English console
+               console.warn("Movie player (iframe): Missing containers for server or report buttons.");
         }
     }
 
 
-    // --- Reproductor de Series/Anime (iframe) ---
-    const seriesAnimeIframePlayerElement = document.getElementById('series-anime-main-iframe-player');
-    const dynamicPlayerSection = document.getElementById('dynamic-player-section');
-    const currentEpisodeTitlePlayerEl = document.getElementById('current-episode-title-player');
-    const currentEpisodeControlsContainer = document.getElementById('current-episode-controls'); 
-    let currentEpisodeActiveEmbedUrl = ""; // Almacenar la URL de EMBED activa para el episodio actual
+    // --- LÓGICA PARA LA PÁGINA DE REPRODUCTOR DE EPISODIOS ---
+    const episodePlayerPageIframe = document.getElementById('episode-iframe-player'); // ID del iframe en episodio_player.html
+    const episodePlayerPageData = document.getElementById('episode-player-data'); // Div con datos en episodio_player.html
+    const episodePlayerPageControlsContainer = document.getElementById('episode-player-page-controls'); // Contenedor de controles en episodio_player.html
+    
+    let currentEpisodePageActiveEmbedUrl = ""; // Almacenar la URL de EMBED activa para esta página
 
-    if (seriesAnimeIframePlayerElement && dynamicPlayerSection && currentEpisodeTitlePlayerEl && currentEpisodeControlsContainer) {
-        const episodeServerButtonsContainer = currentEpisodeControlsContainer.querySelector('#episode-server-buttons');
-        const episodeReportButtonContainer = currentEpisodeControlsContainer.querySelector('#episode-report-button-container');
-        
-        if (!episodeServerButtonsContainer || !episodeReportButtonContainer) {
-            console.warn("Series/Anime player (iframe): Missing containers for episode server or report buttons."); // English console
-        } else {
-            document.querySelectorAll('.series-anime-detail-page .play-episode-master-btn').forEach(masterButton => {
-                masterButton.addEventListener('click', function() {
-                    const episodeItem = this.closest('.episode-item');
-                    const { episodeTitle, episodeIframes, contentId, contentTitle, itemType } = episodeItem.dataset; // itemType will be 'serie' or 'anime'
-                    const originalIframes = episodeIframes ? episodeIframes.split('|||').filter(link => link.trim() !== '') : []; // URLs de EMBED
+    if (episodePlayerPageIframe && episodePlayerPageData && episodePlayerPageControlsContainer) {
+        const serverButtonsContainer = episodePlayerPageControlsContainer.querySelector('#episode-player-server-buttons');
+        const reportButtonContainer = episodePlayerPageControlsContainer.querySelector('#episode-player-report-button-container');
 
-                    episodeServerButtonsContainer.innerHTML = '';
-                    episodeReportButtonContainer.innerHTML = '';
-                    const h4Title = currentEpisodeControlsContainer.querySelector('h4');
-                    if (h4Title) h4Title.style.display = 'block';
+        if (serverButtonsContainer && reportButtonContainer) {
+            const iframeSourcesString = episodePlayerPageData.dataset.iframes;
+            const contentId = episodePlayerPageData.dataset.contentId;       // ID de la serie/anime
+            const contentTitle = episodePlayerPageData.dataset.contentTitle; // Título de la serie/anime
+            const episodeTitle = episodePlayerPageData.dataset.episodeTitle; // Título del episodio actual
+            const itemType = episodePlayerPageData.dataset.itemType;         // 'serie' o 'anime'
+            
+            const originalIframes = iframeSourcesString ? iframeSourcesString.split('|||').filter(link => link.trim() !== '') : [];
 
-                    if (originalIframes.length === 0) {
-                        alert('No playback links available for this episode.'); // English alert
-                        currentEpisodeTitlePlayerEl.textContent = episodeTitle + " (No links)"; // English text
-                        dynamicPlayerSection.style.display = 'block'; 
-                        episodeServerButtonsContainer.style.display = 'none';
-                        episodeReportButtonContainer.style.display = 'none';
-                        if (h4Title) h4Title.style.display = 'none';
-                        seriesAnimeIframePlayerElement.src = ''; 
-                        currentEpisodeActiveEmbedUrl = ""; 
-                        return;
+            serverButtonsContainer.innerHTML = '';
+            reportButtonContainer.innerHTML = '';
+            const h4Title = episodePlayerPageControlsContainer.querySelector('h4');
+            if (h4Title) h4Title.style.display = 'block';
+
+            if (originalIframes.length > 0) {
+                currentEpisodePageActiveEmbedUrl = originalIframes[0];
+
+                if (episodePlayerPageIframe.src !== currentEpisodePageActiveEmbedUrl) {
+                    episodePlayerPageIframe.src = currentEpisodePageActiveEmbedUrl;
+                }
+
+                createOrUpdateReportButton(reportButtonContainer, {
+                    contentId: contentId,
+                    contentTitle: contentTitle,
+                    itemType: itemType,
+                    episodeTitle: episodeTitle,
+                    activeIframeSrc: currentEpisodePageActiveEmbedUrl,
+                    activeServerLabel: "Server 1"
+                });
+
+                originalIframes.forEach((iframeEmbedSrc, index) => {
+                    const serverLabel = `Server ${index + 1}`;
+                    const serverButton = document.createElement('button');
+                    serverButton.classList.add('button', 'button--secondary', 'change-episode-server-btn'); // Puede reutilizar clase o crear una nueva
+                    serverButton.textContent = serverLabel;
+                    serverButton.dataset.iframeSrc = iframeEmbedSrc;
+
+                    if (iframeEmbedSrc === currentEpisodePageActiveEmbedUrl) {
+                        serverButton.classList.add('active');
                     }
 
-                    episodeServerButtonsContainer.style.display = 'flex'; 
-                    episodeReportButtonContainer.style.display = 'flex';
+                    serverButton.addEventListener('click', function() {
+                        const newEmbedSrc = this.dataset.iframeSrc;
+                        if (newEmbedSrc && episodePlayerPageIframe) {
+                            episodePlayerPageIframe.src = newEmbedSrc;
+                            currentEpisodePageActiveEmbedUrl = newEmbedSrc;
 
-                    currentEpisodeTitlePlayerEl.textContent = episodeTitle;
-                    dynamicPlayerSection.style.display = 'block';
+                            serverButtonsContainer.querySelectorAll('.change-episode-server-btn.active').forEach(b => b.classList.remove('active'));
+                            this.classList.add('active');
 
-                    currentEpisodeActiveEmbedUrl = originalIframes[0]; 
-                    seriesAnimeIframePlayerElement.src = currentEpisodeActiveEmbedUrl;
-
-                    createOrUpdateReportButton(episodeReportButtonContainer, {
-                        contentId: contentId,
-                        contentTitle: contentTitle, 
-                        itemType: itemType,
-                        episodeTitle: episodeTitle, 
-                        activeIframeSrc: currentEpisodeActiveEmbedUrl, 
-                        activeServerLabel: "Server 1" // English text
-                    });
-
-                    originalIframes.forEach((iframeEmbedSrc, index) => {
-                        const serverLabel = `Server ${index + 1}`; // English text
-                        const serverButton = document.createElement('button');
-                        serverButton.classList.add('button', 'button--secondary', 'change-episode-server-btn');
-                        serverButton.textContent = serverLabel;
-                        serverButton.dataset.iframeSrc = iframeEmbedSrc; 
-
-                        if (iframeEmbedSrc === currentEpisodeActiveEmbedUrl) {
-                           serverButton.classList.add('active');
+                            createOrUpdateReportButton(reportButtonContainer, {
+                                contentId: contentId,
+                                contentTitle: contentTitle,
+                                itemType: itemType,
+                                episodeTitle: episodeTitle,
+                                activeIframeSrc: currentEpisodePageActiveEmbedUrl,
+                                activeServerLabel: serverLabel
+                            });
                         }
-
-                        serverButton.addEventListener('click', function() {
-                            const newEmbedSrc = this.dataset.iframeSrc; 
-                            if (newEmbedSrc && seriesAnimeIframePlayerElement) {
-                                seriesAnimeIframePlayerElement.src = newEmbedSrc;
-                                currentEpisodeActiveEmbedUrl = newEmbedSrc; 
-                                
-                                episodeServerButtonsContainer.querySelectorAll('.change-episode-server-btn.active').forEach(b => b.classList.remove('active'));
-                                this.classList.add('active');
-
-                                createOrUpdateReportButton(episodeReportButtonContainer, {
-                                    contentId: contentId,
-                                    contentTitle: contentTitle,
-                                    itemType: itemType,
-                                    episodeTitle: episodeTitle,
-                                    activeIframeSrc: currentEpisodeActiveEmbedUrl, 
-                                    activeServerLabel: serverLabel
-                                });
-                            }
-                        });
-                        episodeServerButtonsContainer.appendChild(serverButton);
                     });
-
-                    dynamicPlayerSection.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    serverButtonsContainer.appendChild(serverButton);
                 });
-            });
+            } else { 
+                if (h4Title) h4Title.style.display = 'none';
+                serverButtonsContainer.innerHTML = '';
+                reportButtonContainer.innerHTML = '';
+                // La plantilla HTML ya muestra un mensaje si no hay iframes
+            }
+        } else {
+            console.warn("Episode Player Page: Missing containers for server or report buttons.");
         }
     }
 
-    // --- Funcionalidad de Acordeón para Temporadas ---
-    const seasonBlocks = document.querySelectorAll('.series-anime-detail-page .season-block');
-    seasonBlocks.forEach(block => {
-        const title = block.querySelector('.season-title');
-        const content = block.querySelector('.season-episodes-content');
-        if (title && content) {
-            title.addEventListener('click', function() {
-                const isExpanded = title.classList.contains('expanded');
-                if (isExpanded) {
-                    content.style.maxHeight = null; 
-                    content.style.paddingTop = '0px';
-                    content.style.paddingBottom = '0px';
-                    title.classList.remove('expanded');
-                    content.classList.remove('expanded');
-                } else {
-                    title.classList.add('expanded');
-                    content.classList.add('expanded');
-                    content.style.maxHeight = content.scrollHeight + "px";
-                }
-            });
-        }
-    });
+    // --- Funcionalidad de Acordeón para Temporadas (SOLO EN serie_anime_detail.html) ---
+    // Se ejecuta solo si encuentra los elementos específicos de la página de detalle
+    if (document.querySelector('.series-anime-detail-page .season-block')) { 
+        const seasonBlocks = document.querySelectorAll('.series-anime-detail-page .season-block');
+        seasonBlocks.forEach(block => {
+            const title = block.querySelector('.season-title');
+            const content = block.querySelector('.season-episodes-content');
+            if (title && content) {
+                title.addEventListener('click', function() {
+                    const isExpanded = title.classList.contains('expanded');
+                    if (isExpanded) {
+                        content.style.maxHeight = null; 
+                        content.style.paddingTop = '0px';
+                        content.style.paddingBottom = '0px';
+                        title.classList.remove('expanded');
+                        content.classList.remove('expanded');
+                    } else {
+                        title.classList.add('expanded');
+                        content.classList.add('expanded');
+                        content.style.maxHeight = content.scrollHeight + "px";
+                    }
+                });
+            }
+        });
+    }
 });

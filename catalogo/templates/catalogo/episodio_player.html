@@ -1,0 +1,85 @@
+{% extends "catalogo/base.html" %}
+{% load static %}
+
+{% block title %}{{ page_title }}{% endblock %}
+
+{% block content %}
+<div class="container detail-page episode-player-page">
+    <article class="content-detail">
+        <header class="content-detail__header">
+            <img src="{{ item_general.poster }}" alt="{{ item_general.titulo }} Poster" class="content-detail__poster episode-player__series-poster" loading="lazy">
+            <div class="content-detail__info">
+                <h1>{{ item_general.titulo }}</h1>
+                <h2>T{{ num_temporada }} E{{ num_episodio }}: {{ episodio.titulo }}</h2>
+                {% if episodio.sinopsis %}
+                    <p class="episode-player__episode-synopsis"><strong>Synopsis (Episode):</strong> {{ episodio.sinopsis }}</p>
+                {% endif %}
+                <p><strong>Genre:</strong> {{ item_general.genero|join:", " }}</p>
+                <p><strong>Rating:</strong> {{ item_general.calificacion }}/10</p>
+                {% if item_general.anio %}
+                <p><strong>Year:</strong> {{ item_general.anio }}</p>
+                {% endif %}
+            </div>
+        </header>
+
+        <section class="content-detail__player-section episode-player__main-player-section">
+            {% if episodio.iframes and episodio.iframes.0 %}
+                <div class="video-player-wrapper">
+                    <div class="video-player-container">
+                        <iframe
+                            id="episode-iframe-player"
+                            src="{{ episodio.iframes.0 }}"
+                            frameborder="0"
+                            allowfullscreen
+                            scrolling="no"
+                            allow="autoplay; encrypted-media">
+                        </iframe>
+                    </div>
+                </div>
+                <nav class="episode-navigation-controls">
+                    {% if enlace_anterior %}
+                        <a href="{{ enlace_anterior }}" class="button button--secondary nav-button-episode nav-button-prev">
+                            <img src="{% static 'catalogo/img/anterior.png' %}" alt="Anterior" class="nav-button-icon">
+                            <span class="nav-button-text">Capítulo ANTERIOR</span>
+                        </a>
+                    {% endif %}
+                    
+                    <a href="{{ enlace_lista_episodios }}" class="button button--primary nav-button-episode nav-button-list">
+                        <img src="{% static 'catalogo/img/menu-cap.png' %}" alt="Lista de Episodios" class="nav-button-icon">
+                    </a>
+                    
+                    {% if enlace_siguiente %}
+                        <a href="{{ enlace_siguiente }}" class="button button--secondary nav-button-episode nav-button-next">
+                            <img src="{% static 'catalogo/img/siguiente.png' %}" alt="Siguiente" class="nav-button-icon">
+                            <span class="nav-button-text">Capítulo SIGUIENTE</span>
+                        </a>
+                    {% endif %}
+                </nav>
+                <div id="episode-player-page-controls" class="player-options-controls episode-controls">
+                    <h4>Available Servers:</h4>
+                    <div class="server-selection-controls" id="episode-player-server-buttons">
+                        {# Server buttons will be inserted here by JS #}
+                    </div>
+                    <div class="report-controls" id="episode-player-report-button-container">
+                        {# Report button will be inserted here by JS #}
+                    </div>
+                </div>
+                <div id="episode-player-data"
+                     data-iframes="{{ episodio.iframes|join:'|||' }}"
+                     data-content-id="{{ item_general.id }}"
+                     data-content-title="{{ item_general.titulo }}"
+                     data-episode-title="{{ episodio.titulo }}"
+                     data-item-type="{{ tipo_contenido }}"
+                     style="display:none;">
+                </div>
+            {% else %}
+                <p class="message message--warning">No playback links available for this episode.</p>
+            {% endif %}
+        </section>        
+    </article>
+
+    <div class="ad-space ad-detail-page">
+        <span>Episode Player Page Advertisement</span>
+    </div>
+</div>
+{% endblock %}

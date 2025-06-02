@@ -20,30 +20,8 @@
             </div>
         </header>
 
-        <section class="content-detail__player-section" id="dynamic-player-section" style="display:none;">
-            <h2 id="current-episode-title-player"></h2>
-            <div class="video-player-wrapper">
-                <div class="video-player-container">
-                    <iframe
-                        id="series-anime-main-iframe-player"
-                        frameborder="0"
-                        allowfullscreen
-                        scrolling="no"
-                        allow="autoplay; encrypted-media"
-                        src="">
-                    </iframe>
-                </div>
-            </div>
-            <div id="current-episode-controls" class="player-options-controls episode-controls">
-                <h4>Available Servers (Episode):</h4>
-                <div class="server-selection-controls" id="episode-server-buttons">
-                    {# Server buttons will be inserted here by JS #}
-                </div>
-                <div class="report-controls" id="episode-report-button-container">
-                    {# Report button will be inserted here by JS #}
-                </div>
-            </div>
-        </section>
+        {# SECCIÓN DEL REPRODUCTOR EN LÍNEA ELIMINADA DE AQUÍ #}
+        {# <section class="content-detail__player-section" id="dynamic-player-section" style="display:none;"> ... </section> #}
 
         <section class="seasons-episodes-section">
             <h2>Seasons and Episodes</h2>
@@ -57,21 +35,18 @@
                     <div class="season-episodes-content">
                         <ul class="episode-list">
                             {% for episodio in temporada.episodios %}
-                            <li class="episode-item"
-                                data-episode-title="{{ episodio.titulo }}"
-                                data-episode-iframes="{{ episodio.iframes|join:'|||' }}"
-                                data-content-id="{{ item.id }}"
-                                data-content-title="{{ item.titulo }}"
-                                data-item-type="{{ tipo_contenido }}">
+                            <li class="episode-item">
                                 <div class="episode-item__info">
                                     <span class="episode-item__title">{{ episodio.titulo }}</span>
                                     {% if episodio.sinopsis %}
                                         <p class="episode-item__synopsis">{{ episodio.sinopsis }}</p>
                                     {% endif %}
                                 </div>
-                                <button class="button button--primary play-episode-master-btn">
+                                {# ENLACE A LA NUEVA PÁGINA DE REPRODUCCIÓN #}
+                                <a href="{% url 'catalogo:episodio_player' tipo_contenido=tipo_contenido item_id=item.id num_temporada=temporada.numero num_episodio_en_temporada=episodio.numero_en_temporada %}" 
+                                   class="button button--primary">
                                     Watch Episode
-                                </button>
+                                </a>
                             </li>
                             {% endfor %}
                         </ul>
