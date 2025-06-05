@@ -325,4 +325,4 @@ def search_view(request): # (TU CÓDIGO)
                     if query_lower in item.get('titulo', '').lower(): search_results_items.append({**item, 'tipo': item_type_str})
         find_matches(PELICULAS_DATA, 'pelicula'); find_matches(SERIES_DATA, 'serie'); find_matches(ANIME_DATA, 'anime')
     context = {'query': query_original, 'items': search_results_items, 'titulo_seccion': f"Resultados para: '{query_original}'" if query_original else "Realiza una búsqueda", 'tipo_contenido': 'search', 'error_carga': False}
-    return render(request, 'catalogo/section_page.html', context)
+    return render(request, 'catalogo/section_page.html', context) 
