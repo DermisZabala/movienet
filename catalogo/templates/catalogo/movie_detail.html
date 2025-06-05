@@ -1,11 +1,10 @@
 {% extends "catalogo/base.html" %}
 {% load static %}
-
-{% block title %}{{ item.titulo }}{% endblock %}
-
+{% block title %}{{ item.titulo }} - Watch{% endblock %}
 {% block content %}
 <div class="container detail-page movie-detail-page">
     <article class="content-detail">
+        {# ... (header con info de la película igual que antes) ... #}
         <header class="content-detail__header">
             <img src="{{ item.poster }}" alt="{{ item.titulo }} Poster" class="content-detail__poster" loading="lazy">
             <div class="content-detail__info">
@@ -22,42 +21,22 @@
             {% if item.iframes and item.iframes.0 %}
                 <div class="video-player-wrapper">
                     <div class="video-player-container">
-                        <iframe
-                            id="main-iframe-player"
-                            src="{{ item.iframes.0 }}"
-                            frameborder="0"
-                            allowfullscreen
-                            scrolling="no"
-                            allow="autoplay; encrypted-media"
-                        ></iframe>
+                        <iframe id="main-iframe-player" src="{{ item.iframes.0 }}" frameborder="0" allowfullscreen scrolling="no" allow="autoplay; encrypted-media"></iframe>
                     </div>
                 </div>
-
                 <div class="player-options-controls" id="movie-player-options">
                     <h4>Available Servers:</h4>
-                    <div class="server-selection-controls" id="movie-server-buttons">
-                        <!-- Server buttons will be inserted here by JS -->
-                    </div>
-                    <div class="report-controls" id="movie-report-button-container">
-                        <!-- Report button will be inserted here by JS -->
+                    {# Contenedor ÚNICO para los pares de botones [Opción X] + [Reporte X] #}
+                    <div class="server-options-area" id="movie-server-options-area">
+                        <!-- JavaScript insertará los pares de botones aquí -->
                     </div>
                 </div>
-
-                <div id="movie-iframe-data"
-                     data-iframes="{{ item.iframes|join:'|||' }}"
-                     data-id="{{ item.id }}"
-                     data-title="{{ item.titulo }}"
-                     data-item-type="movie"
-                     style="display:none;">
-                </div>
-
+                <div id="movie-iframe-data" data-iframes="{{ item.iframes|join:'|||' }}" data-id="{{ item.id }}" data-title="{{ item.titulo }}" data-item-type="movie" style="display:none;"></div>
             {% else %}
                 <p class="message message--warning">No streaming links are currently available for this movie.</p>
             {% endif %}
         </section>
     </article>
-    <div class="ad-space ad-detail-page">
-        <span>Ad on Detail Page</span>
-    </div>
+    <div class="ad-space ad-detail-page"><span>Ad on Detail Page</span></div>
 </div>
 {% endblock %}

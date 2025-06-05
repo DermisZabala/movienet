@@ -12,12 +12,11 @@ document.addEventListener('DOMContentLoaded', function() {
     // --- Funcionalidad "Mostrar más" y control de visibilidad de cards ---
     const contentGrid = document.getElementById('content-grid');
     const showMoreBtn = document.getElementById('show-more-btn');
-    let itemsToShow = 20; 
-    const increment = 15; 
-
     if (contentGrid) { 
         const tipoContenido = contentGrid.dataset.tipoContenido; 
         const allCards = Array.from(contentGrid.getElementsByClassName('card'));
+        let itemsToShow = 20; 
+        const increment = 15; 
 
         if (tipoContenido === 'search' || !showMoreBtn) {
             allCards.forEach(card => card.classList.add('visible')); 
@@ -29,24 +28,22 @@ document.addEventListener('DOMContentLoaded', function() {
                 allCards.forEach((card, index) => {
                     if (index < itemsToShow) {
                         card.classList.add('visible'); 
-                    } else {
-                        card.classList.remove('visible'); 
                     }
                 });
                 if (itemsToShow >= allCards.length) {
-                    showMoreBtn.classList.add('hidden');
+                    if (showMoreBtn) showMoreBtn.classList.add('hidden');
                 } else {
-                    showMoreBtn.classList.remove('hidden');
+                    if (showMoreBtn) showMoreBtn.classList.remove('hidden');
                 }
             }
-            if (showMoreBtn) { // Añadir event listener solo si el botón existe
+            if (showMoreBtn) {
                 showMoreBtn.addEventListener('click', () => {
                     itemsToShow += increment;
                     displayCards();
                 });
             }
             if (allCards.length > 0) {
-                displayCards();
+                displayCards(); 
             } else if (allCards.length === 0 && showMoreBtn) {
                 showMoreBtn.classList.add('hidden'); 
             }
@@ -69,29 +66,42 @@ document.addEventListener('DOMContentLoaded', function() {
         return cookieValue;
     }
 
-    // --- Reportar Enlace Caído (Handler Genérico) ---
-    function handleReportLink(event) {
-        const button = event.currentTarget;
-        const { contentId, contentTitle, reportedLink, itemType, episodeTitle = '', serverLabel = '' } = button.dataset;
+
+    // --- Reportar Enlace Caído (Handler Genérico para CADA botón de reporte individual) ---
+    function handleIndividualReportLink(event) {
+        const reportButton = event.currentTarget;
+        const { 
+            contentId, 
+            contentTitle, 
+            reportedLink,
+            itemType, 
+            episodeTitle = '', 
+            serverLabel = 'Desconocido'
+        } = reportButton.dataset;
 
         if (!contentId || !contentTitle || !reportedLink || !itemType) {
-            console.error('Incomplete data for report:', button.dataset);
+            console.error('Incomplete data for report:', reportButton.dataset);
             alert('Missing data to send the report.');
             return;
         }
+        if (!reportedLink || reportedLink === 'about:blank' || reportedLink.trim() === '') {
+            alert('No valid link associated with this report button.');
+            return;
+        }
+
         const payload = {
             content_id: contentId,
             content_title: contentTitle,
             reported_link: reportedLink, 
             item_type: itemType,
             episode_title: episodeTitle,
-            server_label: serverLabel
+            active_server_label: serverLabel
         };
-        const reportUrl = '/reportar-enlace/'; // Asegúrate que esta URL está definida en tus urls.py globales
+        const reportUrl = '/reportar-enlace/';
         
-        const originalButtonText = button.textContent;
-        button.disabled = true;
-        button.textContent = 'Reporting...';
+        const originalButtonText = reportButton.textContent;
+        reportButton.disabled = true;
+        reportButton.textContent = 'Reporting...';
 
         fetch(reportUrl, {
             method: 'POST',
@@ -101,212 +111,133 @@ document.addEventListener('DOMContentLoaded', function() {
             },
             body: JSON.stringify(payload)
         })
-        .then(response => response.json())
+        .then(response => {
+            if (!response.ok) {
+                return response.json().then(errData => {
+                    throw new Error(errData.message || `Server error: ${response.status}`);
+                }).catch(() => { 
+                    throw new Error(`Server error: ${response.status} ${response.statusText}`);
+                });
+            }
+            return response.json();
+        })
         .then(data => {
             if (data.status === 'success') {
-                alert('Thank you! Your report has been submitted.');
-                button.textContent = 'Reported'; 
+                alert(data.message || 'Thank you! Your report has been submitted.');
+                reportButton.textContent = 'Reported'; 
             } else {
-                alert('Error sending report: ' + (data.message || 'Try again.'));
-                button.textContent = originalButtonText;
-                button.disabled = false;
+                alert('Error sending report: ' + (data.message || 'Please try again.'));
+                reportButton.textContent = originalButtonText;
+                reportButton.disabled = false;
             }
         })
         .catch(error => {
             console.error('Error in report request:', error);
-            alert('There was a connection error while reporting the link.');
-            button.textContent = originalButtonText;
-            button.disabled = false;
+            alert('There was an error while reporting the link: ' + error.message);
+            reportButton.textContent = originalButtonText;
+            reportButton.disabled = false;
         });
     }
 
-    // --- Función para crear y actualizar el botón de reporte único ---
-    function createOrUpdateReportButton(container, data) {
-        if (!container) return; // Si el contenedor no existe, no hacer nada
-        let reportBtn = container.querySelector('.report-video-btn');
-        if (!reportBtn) {
-            reportBtn = document.createElement('button');
-            reportBtn.classList.add('button', 'button--danger', 'report-video-btn');
-            container.appendChild(reportBtn);
-            reportBtn.addEventListener('click', handleReportLink);
+    // --- LÓGICA COMÚN PARA REPRODUCTORES (PELÍCULAS Y EPISODIOS) ---
+    // Funciona con el HTML modificado que tiene un solo .server-options-area
+    function initializePlayerWithIndividualReports(playerType) {
+        const isMovie = playerType === 'movie';
+        // console.log(`[JS INIT] Player Type: ${playerType}`);
+        
+        const iframePlayerElement = document.getElementById(isMovie ? 'main-iframe-player' : 'episode-iframe-player');
+        const playerDataElement = document.getElementById(isMovie ? 'movie-iframe-data' : 'episode-player-data');
+        
+        const optionsAreaId = isMovie ? 'movie-server-options-area' : 'episode-server-options-area';
+        const optionsAreaContainer = document.getElementById(optionsAreaId);
+        
+        const playerControlsContainer = document.getElementById(isMovie ? 'movie-player-options' : 'episode-player-page-controls');
+        const h4Title = playerControlsContainer ? playerControlsContainer.querySelector('h4') : null;
+
+        if (!iframePlayerElement || !playerDataElement || !optionsAreaContainer) {
+            /* // Descomentar para depurar si los botones no aparecen
+            console.warn(`[JS WARN - ${playerType}] Essential elements missing.
+                - iframePlayer (for '${isMovie ? 'main-iframe-player' : 'episode-iframe-player'}'): ${!!iframePlayerElement}
+                - playerData (for '${isMovie ? 'movie-iframe-data' : 'episode-player-data'}'): ${!!playerDataElement}
+                - optionsAreaContainer (for '${optionsAreaId}'): ${!!optionsAreaContainer}
+                Button generation aborted.`);
+            */
+            return;
         }
-        reportBtn.textContent = 'Report Video';
-        reportBtn.dataset.contentId = data.contentId;
-        reportBtn.dataset.contentTitle = data.contentTitle;
-        reportBtn.dataset.itemType = data.itemType;
-        reportBtn.dataset.reportedLink = data.activeIframeSrc; 
-        reportBtn.dataset.serverLabel = data.activeServerLabel;
-        if (data.episodeTitle) {
-            reportBtn.dataset.episodeTitle = data.episodeTitle;
+
+        const iframeSourcesString = playerDataElement.dataset.iframes || "";
+        const contentId = playerDataElement.dataset.id || playerDataElement.dataset.contentId;
+        const contentTitle = playerDataElement.dataset.title || playerDataElement.dataset.contentTitle;
+        const itemType = playerDataElement.dataset.itemType;
+        const episodeTitle = isMovie ? '' : (playerDataElement.dataset.episodeTitle || '');
+        
+        const originalIframes = iframeSourcesString.split('|||').map(link => link.trim()).filter(link => link !== '');
+
+        optionsAreaContainer.innerHTML = ''; 
+
+        if (h4Title) {
+            h4Title.style.display = originalIframes.length > 0 ? 'block' : 'none';
+        } else if (playerControlsContainer) { // Si no hay h4 específico, pero sí el contenedor padre, no hacer nada con el h4
+            // console.log(`[JS INFO - ${playerType}] h4 title element not found within playerControlsContainer.`);
         }
-        reportBtn.disabled = false;
-    }
 
 
-    // --- REPRODUCTOR DE PELÍCULAS (IFRAME) ---
-    const movieIframePlayerElement = document.getElementById('main-iframe-player');
-    const moviePlayerOptionsContainer = document.getElementById('movie-player-options');
-    const movieIframeDataElement = document.getElementById('movie-iframe-data');
-    let currentMovieActiveEmbedUrl = ""; 
+        if (originalIframes.length > 0) {
+            originalIframes.forEach((iframeEmbedSrc, index) => {
+                const optionNumber = index + 1;
+                const optionLabelText = `Option ${optionNumber}`;
 
-    if (movieIframePlayerElement && moviePlayerOptionsContainer && movieIframeDataElement) {
-        const movieServerButtonsContainer = moviePlayerOptionsContainer.querySelector('#movie-server-buttons');
-        const movieReportButtonContainer = moviePlayerOptionsContainer.querySelector('#movie-report-button-container');
+                const pairContainer = document.createElement('div');
+                pairContainer.classList.add('option-report-pair');
 
-        if (movieServerButtonsContainer && movieReportButtonContainer) {
-            const iframeSourcesString = movieIframeDataElement.dataset.iframes;
-            const movieId = movieIframeDataElement.dataset.id;
-            const movieTitle = movieIframeDataElement.dataset.title;
-            const itemType = movieIframeDataElement.dataset.itemType; 
-            const originalIframes = iframeSourcesString ? iframeSourcesString.split('|||').filter(link => link.trim() !== '') : [];
+                const serverButton = document.createElement('button');
+                serverButton.classList.add('button', 'button--secondary', `select-${playerType}-option-btn`); 
+                serverButton.textContent = optionLabelText; 
+                serverButton.type = 'button';
+                serverButton.dataset.iframeSrc = iframeEmbedSrc;
 
-            movieServerButtonsContainer.innerHTML = '';
-            movieReportButtonContainer.innerHTML = '';
-
-            if (originalIframes.length > 0) {
-                currentMovieActiveEmbedUrl = originalIframes[0]; 
-
-                if (movieIframePlayerElement.src !== currentMovieActiveEmbedUrl) {
-                    movieIframePlayerElement.src = currentMovieActiveEmbedUrl; 
+                if (index === 0) {
+                    serverButton.classList.add('active');
                 }
 
-                createOrUpdateReportButton(movieReportButtonContainer, {
-                    contentId: movieId,
-                    contentTitle: movieTitle,
-                    itemType: itemType,
-                    activeIframeSrc: currentMovieActiveEmbedUrl, 
-                    activeServerLabel: "Server 1" 
-                });
-
-                originalIframes.forEach((iframeEmbedSrc, index) => {
-                    const serverLabel = `Server ${index + 1}`; 
-                    const serverButton = document.createElement('button');
-                    serverButton.classList.add('button', 'button--secondary', 'change-movie-server-btn');
-                    serverButton.textContent = serverLabel;
-                    serverButton.dataset.iframeSrc = iframeEmbedSrc; 
-
-                    if (iframeEmbedSrc === currentMovieActiveEmbedUrl) {
-                        serverButton.classList.add('active');
+                serverButton.addEventListener('click', function() {
+                    const newEmbedSrc = this.dataset.iframeSrc;
+                    if (newEmbedSrc && iframePlayerElement.src !== newEmbedSrc && newEmbedSrc !== 'about:blank') { 
+                        iframePlayerElement.src = newEmbedSrc;
+                        optionsAreaContainer.querySelectorAll(`.select-${playerType}-option-btn.active`).forEach(b => b.classList.remove('active'));
+                        this.classList.add('active');
                     }
-
-                    serverButton.addEventListener('click', function() {
-                        const newEmbedSrc = this.dataset.iframeSrc; 
-                        if (newEmbedSrc && movieIframePlayerElement) {
-                            movieIframePlayerElement.src = newEmbedSrc;
-                            currentMovieActiveEmbedUrl = newEmbedSrc; 
-                            
-                            movieServerButtonsContainer.querySelectorAll('.change-movie-server-btn.active').forEach(b => b.classList.remove('active'));
-                            this.classList.add('active');
-
-                            createOrUpdateReportButton(movieReportButtonContainer, {
-                                contentId: movieId,
-                                contentTitle: movieTitle,
-                                itemType: itemType,
-                                activeIframeSrc: currentMovieActiveEmbedUrl, 
-                                activeServerLabel: serverLabel
-                            });
-                        }
-                    });
-                    movieServerButtonsContainer.appendChild(serverButton);
                 });
-            } else {
-                const h4 = moviePlayerOptionsContainer.querySelector('h4');
-                   if (h4) h4.style.display = 'none';
-                   movieServerButtonsContainer.innerHTML = '';
-                   movieReportButtonContainer.innerHTML = '';
-            }
-        } else {
-               console.warn("Movie player (iframe): Missing containers for server or report buttons.");
-        }
-    }
+                pairContainer.appendChild(serverButton);
 
-
-    // --- LÓGICA PARA LA PÁGINA DE REPRODUCTOR DE EPISODIOS ---
-    const episodePlayerPageIframe = document.getElementById('episode-iframe-player'); // ID del iframe en episodio_player.html
-    const episodePlayerPageData = document.getElementById('episode-player-data'); // Div con datos en episodio_player.html
-    const episodePlayerPageControlsContainer = document.getElementById('episode-player-page-controls'); // Contenedor de controles en episodio_player.html
-    
-    let currentEpisodePageActiveEmbedUrl = ""; // Almacenar la URL de EMBED activa para esta página
-
-    if (episodePlayerPageIframe && episodePlayerPageData && episodePlayerPageControlsContainer) {
-        const serverButtonsContainer = episodePlayerPageControlsContainer.querySelector('#episode-player-server-buttons');
-        const reportButtonContainer = episodePlayerPageControlsContainer.querySelector('#episode-player-report-button-container');
-
-        if (serverButtonsContainer && reportButtonContainer) {
-            const iframeSourcesString = episodePlayerPageData.dataset.iframes;
-            const contentId = episodePlayerPageData.dataset.contentId;       // ID de la serie/anime
-            const contentTitle = episodePlayerPageData.dataset.contentTitle; // Título de la serie/anime
-            const episodeTitle = episodePlayerPageData.dataset.episodeTitle; // Título del episodio actual
-            const itemType = episodePlayerPageData.dataset.itemType;         // 'serie' o 'anime'
-            
-            const originalIframes = iframeSourcesString ? iframeSourcesString.split('|||').filter(link => link.trim() !== '') : [];
-
-            serverButtonsContainer.innerHTML = '';
-            reportButtonContainer.innerHTML = '';
-            const h4Title = episodePlayerPageControlsContainer.querySelector('h4');
-            if (h4Title) h4Title.style.display = 'block';
-
-            if (originalIframes.length > 0) {
-                currentEpisodePageActiveEmbedUrl = originalIframes[0];
-
-                if (episodePlayerPageIframe.src !== currentEpisodePageActiveEmbedUrl) {
-                    episodePlayerPageIframe.src = currentEpisodePageActiveEmbedUrl;
+                const reportButton = document.createElement('button');
+                reportButton.classList.add('button', 'report-option-styled-button', 'report-this-option-btn');
+                reportButton.textContent = `Report ${optionLabelText}`; 
+                reportButton.type = 'button';
+                reportButton.dataset.contentId = contentId;
+                reportButton.dataset.contentTitle = contentTitle;
+                reportButton.dataset.itemType = itemType;
+                if (episodeTitle) {
+                    reportButton.dataset.episodeTitle = episodeTitle;
                 }
+                reportButton.dataset.reportedLink = iframeEmbedSrc;
+                reportButton.dataset.serverLabel = optionLabelText;
+                reportButton.addEventListener('click', handleIndividualReportLink);
+                pairContainer.appendChild(reportButton);
 
-                createOrUpdateReportButton(reportButtonContainer, {
-                    contentId: contentId,
-                    contentTitle: contentTitle,
-                    itemType: itemType,
-                    episodeTitle: episodeTitle,
-                    activeIframeSrc: currentEpisodePageActiveEmbedUrl,
-                    activeServerLabel: "Server 1"
-                });
+                optionsAreaContainer.appendChild(pairContainer);
+            });
 
-                originalIframes.forEach((iframeEmbedSrc, index) => {
-                    const serverLabel = `Server ${index + 1}`;
-                    const serverButton = document.createElement('button');
-                    serverButton.classList.add('button', 'button--secondary', 'change-episode-server-btn'); // Puede reutilizar clase o crear una nueva
-                    serverButton.textContent = serverLabel;
-                    serverButton.dataset.iframeSrc = iframeEmbedSrc;
-
-                    if (iframeEmbedSrc === currentEpisodePageActiveEmbedUrl) {
-                        serverButton.classList.add('active');
-                    }
-
-                    serverButton.addEventListener('click', function() {
-                        const newEmbedSrc = this.dataset.iframeSrc;
-                        if (newEmbedSrc && episodePlayerPageIframe) {
-                            episodePlayerPageIframe.src = newEmbedSrc;
-                            currentEpisodePageActiveEmbedUrl = newEmbedSrc;
-
-                            serverButtonsContainer.querySelectorAll('.change-episode-server-btn.active').forEach(b => b.classList.remove('active'));
-                            this.classList.add('active');
-
-                            createOrUpdateReportButton(reportButtonContainer, {
-                                contentId: contentId,
-                                contentTitle: contentTitle,
-                                itemType: itemType,
-                                episodeTitle: episodeTitle,
-                                activeIframeSrc: currentEpisodePageActiveEmbedUrl,
-                                activeServerLabel: serverLabel
-                            });
-                        }
-                    });
-                    serverButtonsContainer.appendChild(serverButton);
-                });
-            } else { 
-                if (h4Title) h4Title.style.display = 'none';
-                serverButtonsContainer.innerHTML = '';
-                reportButtonContainer.innerHTML = '';
-                // La plantilla HTML ya muestra un mensaje si no hay iframes
-            }
         } else {
-            console.warn("Episode Player Page: Missing containers for server or report buttons.");
+            if (h4Title) h4Title.style.display = 'none';
+            optionsAreaContainer.innerHTML = '<p class="message message--info">No streaming options available.</p>';
         }
     }
 
-    // --- Funcionalidad de Acordeón para Temporadas (SOLO EN serie_anime_detail.html) ---
-    // Se ejecuta solo si encuentra los elementos específicos de la página de detalle
+    initializePlayerWithIndividualReports('movie');
+    initializePlayerWithIndividualReports('episode');
+
+    // --- Funcionalidad de Acordeón para Temporadas ---
     if (document.querySelector('.series-anime-detail-page .season-block')) { 
         const seasonBlocks = document.querySelectorAll('.series-anime-detail-page .season-block');
         seasonBlocks.forEach(block => {
@@ -315,16 +246,12 @@ document.addEventListener('DOMContentLoaded', function() {
             if (title && content) {
                 title.addEventListener('click', function() {
                     const isExpanded = title.classList.contains('expanded');
-                    if (isExpanded) {
-                        content.style.maxHeight = null; 
-                        content.style.paddingTop = '0px';
-                        content.style.paddingBottom = '0px';
-                        title.classList.remove('expanded');
-                        content.classList.remove('expanded');
-                    } else {
-                        title.classList.add('expanded');
-                        content.classList.add('expanded');
+                    title.classList.toggle('expanded', !isExpanded);
+                    content.classList.toggle('expanded', !isExpanded);
+                    if (!isExpanded) {
                         content.style.maxHeight = content.scrollHeight + "px";
+                    } else {
+                        content.style.maxHeight = null;
                     }
                 });
             }
